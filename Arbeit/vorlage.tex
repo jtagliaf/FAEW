@@ -1,0 +1,153 @@
+%
+%  Vorlage/Template fuer #EBT
+%
+%  Created by Prof. Dr. Detlef Kreuz on 2010-08-14.
+%  Copyright (c) 2010 . All rights reserved.
+%
+\documentclass[12pt,toc=bib,toc=listof]{scrreprt}
+\usepackage[ngerman]{babel} 
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{setspace}
+
+\usepackage{hyperref}
+\hypersetup{
+  ,colorlinks=true
+  ,linkcolor=blue
+  ,citecolor=blue
+  ,filecolor=blue
+  ,urlcolor=blue
+  }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% % (fold)
+% Vom Studierenden zu aendernde Werte
+\newcommand{\ebttopic}{THEMA}
+\newcommand{\ebtstudentname}{VORNAME NAME}
+\newcommand{\ebtstudentid}{MATRIKELNUMMER}
+\urldef{\ebtstudentmail}\url{MAIL@stud.hs-heilbronn.de}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% % (end)
+
+\usepackage{ifpdf}
+\ifpdf
+\usepackage[pdftex]{graphicx}
+\else
+\usepackage{graphicx}
+\fi
+
+\usepackage[headsepline]{scrpage2}
+\pagestyle{scrheadings}
+\clearscrheadfoot
+\ihead{E-Business-Technologien: \ebttopic}
+\ohead{\pagemark}
+\renewcommand*{\chapterpagestyle}{scrheadings}
+\renewcommand*{\chapterheadstartvskip}{}
+
+\titlehead{\flushright
+%\includegraphics{HHN_KOMPLETT_4C.jpg}
+\includegraphics[scale=0.6]{HHN_ab_40_mm_4c_neg.png}
+}
+\subject{Seminar E-Business-Technologien (281541)}
+\title{\ebttopic}
+\author{\ebtstudentname\footnote{\ebtstudentid, \ebtstudentmail}}
+%% Datum nie auf einen festen Wert setzen
+\publishers{Eingereicht bei Prof. Dr. Detlef Kreuz}
+
+%\pagestyle{headings}
+
+\begin{document}
+\pagenumbering{roman} 
+\selectlanguage{ngerman}
+\maketitle
+\tableofcontents
+
+\addchap{Abkürzungsverzeichnis} % (fold)
+\label{sec:abkuerzungsverzeichnis}
+
+\begin{description}
+  \item[ABK:] ABKÜRZUNG 
+\end{description}
+
+% chapter abkuerzungsverzeichnis (end)
+
+\listoffigures
+\listoftables
+
+\onehalfspacing
+
+\addchap{Management Summary} % (fold)
+\label{cha:management_summary}
+
+\ldots
+
+% chapter management_summary (end)
+
+\newpage
+\pagenumbering{arabic}
+
+\chapter{Einleitung} % (fold)
+\label{sec:einleitung}
+
+\section{Motivation} % (fold)
+\label{sec:motivation}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
+vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
+dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no
+sea takimata sanctus est Lorem ipsum dolor sit amet.
+
+% section motivation (end)
+
+\section{Ziel der Arbeit} % (fold)
+\label{sec:ziel_der_arbeit}
+
+\ldots
+
+% section ziel_der_arbeit (end)
+
+\section{Vorgehensweise} % (fold)
+\label{sec:vorgehensweise}
+
+\ldots
+
+% section vorgehensweise (end)
+% chapter einleitung (end)
+
+\chapter{Grundlagen} % (fold)
+\label{sec:grundlagen}
+
+\ldots
+
+% chapter grundlagen (end)
+
+%%% ggf. weitere Abschnitte
+
+\chapter{Fazit} % (fold)
+\label{sec:fazit}
+
+\ldots
+
+% chapter fazit (end)
+
+\appendix
+\begin{thebibliography}{99}
+\raggedright
+%%% Printquellen zuerst
+%%% Beispiel
+\bibitem{Th11} Manuel René Theisen:
+ \emph{Wissenschaftliches Arbeiten: Technik -- Methodik -- Form};
+ 15.~Auflage; Vahlen; München 2011;
+ ISBN 978-3-8006-3830-7
+
+%%% Internetquellen: Beispiel
+\bibitem{hhneb} \emph{Hochschule Heilbronn};
+ \url{http://www.hs-heilbronn.de/};
+ abgerufen am 14.08.2010
+\end{thebibliography}
+\end{document}
+
