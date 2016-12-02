@@ -80,29 +80,33 @@
 
 \chapter{Einleitung} % (fold)
 \label{sec:einleitung}
-In der Einleitung der Arbeit („Was ich sagen will“) wird der Untersuchungsgegenstand
-kurz umrissen und gegenüber weiterer Thematiken abgegrenzt, ggf. können auch die
-verwendeten Methoden und begriffliche Grundlagen knapp erläutert werden. Ziel ist
-es, das Interesse des Lesers zu wecken. Dabei soll neben der Motivation zur Arbeit,
-das Ziel der Arbeit aufgezeigt werden sowie ein kurzer Überblick über den Aufbau der
-Arbeit sowie die methodische Vorgehensweise gegeben werden.
 
 \section{Motivation} % (fold)
 \label{sec:motivation}
-- Warum ist dies ein relevantes Thema zur momentanen Zeit ?
+
+Technologien welche im Big Data und Cloud Umfeld entstanden und gewachsen sind, werden immer häufiger auch in anderen Bereichen eingesetzt. So entstand die Virtualisierung von Betriebssystemen als Grundlage des Cloud Computing um auf individuelle Wünsche und eine stetig schwankende Ressourcenverteilung zu reagieren. So wie diese Technology ihren Weg in viele weitere Bereiche geebnet hat, findet die Container Virtualisierung eine immer vielseitigere Anwendung.
+Getragen und weiterentwickelt von Branchengrößen wie Google oder IBM ist die Container Virtualisierung momentan eine der sich am schnellsten wachsenden Bereiche der Informatik.
+Sie verspricht eine noch stärkere flexibilität und automatisierung von Systemen und Ressourcen und ist deshalb ein relevantes Thema für jede Branche, welche mit Soft- und Hardwaresystemen in Kontakt kommt.
+
 
 % section motivation (end)
 
 \section{Ziel der Arbeit} % (fold)
 \label{sec:ziel_der_arbeit}
-- Was soll den genau erarbeitet werden ?
-
+Diese Ausarbeitung soll als Einstieg in den Bereich Container Virtualisierung dienen und dabei Docker als zentrale Komponente behandeln und vorstellen.
+Es soll ein umfassender Einblick in die Thematik und deren unterschiedliche herangehensweisen erörtert werden, wodurch eingeschätzt werden kann, inwieweit sich die Container Virtualisierung für individuelle Einsatzzwecke eignet.
 
 % section ziel_der_arbeit (end)
 
 \section{Vorgehensweise} % (fold)
 \label{sec:vorgehensweise}
-- wie wird die Arbeit nun aufgebaut sein, was sind die Schritte um Schlussendlich auf ein Ergebnis zu kommen
+
+Um dieses Ziel zu erreichen, werden die Grundlagen in Form der Idee und grundlegenden Historie und deren Konzepte, welche die Basis von Docker beinhalten, erläutert.
+Daraufhin wird die Umsetzung dieser Konzepte und deren Erweiterungen in Docker betrachtet und daraus auf mögliche Vor- und Nachteile geschlossen.
+Aufbauend auf diesen Grundlagen, werden Anwendungsbereiche vorgestellt, in dennen Docker in einem produktiven Umfeld eingesetzt wird und welche Tools den massiven und verteilten Einsatz von Containern erleichtern.
+Mögliche Alternativen und deren Unterschiede, sowie ein Ausblick in die Zukunft der Container Virtualisierung sollen diese Arbeit abrunden.
+
+
 
 % section vorgehensweise (end)
 % chapter einleitung (end)
@@ -119,10 +123,36 @@ zum Speziellen aufzubauen. Wichtig ist es, den roten Faden in der Arbeit beizube
 ten.
 
 \section{Was ist Docker ? Was versteht man darunter ?}
+Die Bezeichnung Docker, findet schon lange nicht nur im Cloud spezifischen Umfeld erwähnung.
+Der aufmerksame Nutzer stößst immer öfter schon bei der Installation von Anwendungen auf diesen Term.
+Ein Beispiel hierfür wäre das Test und Entwicklungswerkzeug Jenkins, welches nun an erster Stelle die Option eines Docker Containers als mögliche Installationsquelle zur Verfügung stellt. \cite{jenkins}
+Viele weitere Hersteller welche Werkzeuge anbieten, welche auf unterschiedlichste Bibliotheken und Anwendungen angewiesen sind, greifen immer öfter zu Docker. 
+Hierbei stellt sich jedoch die Frage, was ist Docker ? \\
+Auf der Offiziellen Seite wird diese Frage mit folgendem Satz beantwortet :
+
+\begin{quote}
+	\footnote[1]{Vgl. https://www.docker.com/what-docker}
+	"`\textit{Docker is the world's leading software containerization platform}"
+\end{quote}
+Da diese Aussage wenig bis keinen Informationsgehalt bietet, macht es sinn, sich zuerst einmal die Grundlegenden Konzepte und historische Entwicklung der Container Virtualisierung zu betrachten. 
 
 \section{Die Geschichte, der Ursprung und Entwicklung von Docker}
+Wie so viele Entwicklungen im technischen Umfeld sind die Konzepte und ersten Umsetzungen der Container Virtualisierung schon weitaus älter als man vermuten sollte.
+Es begann alles mit der Idee Services untereinander und vom eigentlichen Host isolieren zu können.
+Dieses Konzept wurde erstmals im Jahre 1979 unter UNIX mit der funktion des "chroot" umgesetzt, diese Funktion isolierte das Hauptverzeichnis eines Prozresse an einem neuen Ort.\\
+Erst im Jahre 2000 wurde diese Funktionalität unter FreeBSD mit dem Namen Jails erneut aufgenommen und erweitert.
+Diesmal konnte nicht nur das Dateisystem isoliert werden, sondern auch dazugehörige Benutzer, Netzwerk und dazugehörige Prozesse.\\
+Über die nächsten acht Jahre können viele weitere Technologien gefunden werden, welche diese Funktionalitäten integrieren. Darunter 
+Linux VServer, Oracle Solaris Zones, OpenVZ, Process Container (von Google entwickelt),ControlGroups im Linux Kernel und WPARS.
+2008 entstand dann durch die Entwicklung bei IBM  das Linux Containers project (LXC) welches die unterschiedlichsten Technologien im Container Umfeld zusammen brachte und somit die vollständigste Implementierung eines Linux Container Managements darstellte.
+Die besonderheit von LXC, bestand darin, dass es seine ressourcen komplett aus dem Linux Kernel bezog ohne zusätzliche Software zu benötigen.
+Im Jahre 2013 erschien Docker , welches die vorhandene Funktionalität erweiterte und sehr viel einfacher zugänglich machte.
 
 \section{Wie funktioniert Docker ?}
+
+
+
+
 
 \section{Fähigkeiten und Eigenschaften von Docker ?}
 
@@ -132,9 +162,10 @@ ten.
 
 \chapter{Docker im Produktiveinsatz}
 
+\section{Anwendungsbereiche - Wer nutzt Docker ?}
+
 \section{Tools - Kubernetes / Docker Swarm}
 
-\section{Anwendungsbereiche - Wer nutzt Docker ?}
 
 \section{Alternativen und Unterschiede ?}
 
@@ -166,6 +197,21 @@ gebracht werden.
 \bibitem{hhneb} \emph{Hochschule Heilbronn};
  \url{http://www.hs-heilbronn.de/};
  abgerufen am 14.08.2010
+ 
+\bibitem{jenkins} \emph{Jenkins};
+ \url{https://jenkins.io/};
+ abgerufen am 02.12.2016
+ 
+\bibitem{dockerWhat} \emph{Docker};
+ \url{https://www.docker.com/what-docker};
+ abgerufen am 02.12.2016
+
+ 
+ 
+ 
+ 
+ 
+ 
 \end{thebibliography}
 \end{document}
 
