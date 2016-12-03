@@ -36,6 +36,7 @@
 \usepackage{graphicx}
 \fi
 
+\graphicspath{{images/}}
 \usepackage[headsepline]{scrpage2}
 \pagestyle{scrheadings}
 \clearscrheadfoot
@@ -146,15 +147,54 @@ Diesmal konnte nicht nur das Dateisystem isoliert werden, sondern auch dazugehö
 Linux VServer, Oracle Solaris Zones, OpenVZ, Process Container (von Google entwickelt),ControlGroups im Linux Kernel und WPARS.
 2008 entstand dann durch die Entwicklung bei IBM  das Linux Containers project (LXC) welches die unterschiedlichsten Technologien im Container Umfeld zusammen brachte und somit die vollständigste Implementierung eines Linux Container Managements darstellte.
 Die besonderheit von LXC, bestand darin, dass es seine ressourcen komplett aus dem Linux Kernel bezog ohne zusätzliche Software zu benötigen.
-Im Jahre 2013 erschien Docker , welches die vorhandene Funktionalität erweiterte und sehr viel einfacher zugänglich machte.
+Am 15.03.2013 wurde Docker, durch den dotCloud Gründer Solomon Hykes zum ersten mal der Öffentlichkeit vorgestellt.
+Diese Vorstellung bestand nur aus einem fünf minütigen Vortrag auf der Python Entwickler Konferenz in Kalifornien.
+Verbreitete sich jedoch weltweit mit enormer Geschwindigkeit wodurch das Projekt schnellstmöglich auf GitHub offen gelegt wurde um die weitere Entwicklung voran zu treiben.
 
 \section{Wie funktioniert Docker ?}
 
+Abgesehen von der schnellen Verbreitung von Docker, war vielen Interessenten die eigenltiche Funktionsweise nicht vollständig bewusst.
+Docker versprach, ein Stück Software in ein komplettes Dateisystem zu verpacken, welches alles beeinhaltete was für das Ausführen dieser  nötig ist. Dazu gehört der Quellcode, System Bibliotheken/Tools und die Ausführumgebung. Dies sorgte dafür, dass sich die Software immer gleich verhält egal auf welcher Umgebung sie ausgeführt wird. 
+Hinzu kam, das Container aufgrund ihrere Größe und Isolation  beliebig gestartet oder gestoppt werden konnten, ohne das Host System zu beeinflussen.
+Einige dieser Eigenschaften, werden oftmals sehr gerne mit denen Virtueller Maschinen verglichen, da es auf den ersten Blick sehr viele Ähnlichkeiten aufweist.
+Die Entwickler von Docker, distanzieren sich jedoch sehr klar von diesem Vergleich und machen darauf aufmerksam, dass Docker sehr viel mehr ist.
+Um jedoch die Grundlegenden funktionsweisen zu erläutern, macht es Sinn diesen Vergleich zu bemühen.
+
+\begin{figure}
+	\centering
+	\caption{VM vs Container}
+	\includegraphics[width=15cm, height=8cm, scale=0.3]{dockerVM.jpg}
+	Quelle: www.docker.com/what-docker
+\end{figure}
+
+Wie in der Abbildung unschwer zu erkennen, liegt ein sehr wesentlicher Unterschied in der größe der Lösungen.
+Da eine Virtuelle Maschine über einen Hypervisor mit dem Hostsystem kommuniziert bringt es bei jeder Instanz ein komplettes Gast Betriebssystem mit sich. Dies führt dazu, dass nur wenige Instanzen auf einem Host ausgeführt werden können.
+Da jedoch jeder Docker Container den Kernel des Hostsystems nutzt, ist es möglich auf einer Maschine mehrere hundert Container parallel zu betreiben.
+Damit dies möglich wurde, nutzt Docker mehrere Funktionen des Linux Kernels wobei folgende essentiell sind:
+
+- CGroups : Limitiert und verwaltet die Ressourcen wie CPU , Arbeitsspeicher, Netzwerk und Festplattenzugriff welche einer Prozessgruppe zugewiesen werden können. 
+
+- Namespace isolation : Prozessgruppen sind nicht in der Lage die Ressourcen anderer Gruppen zu sehen.
+
+\begin{figure}
+	\centering
+	\caption{Treiber}
+	\includegraphics[width=15cm, height=8cm, scale=0.3]{docker-execdriver-diagram.png}
+	Quelle: http://jancorg.github.io/blog/2015/01/03/libcontainer-overview/
+\end{figure}
+
+Bis zur Version 0.9 war Docker von der LXC-Bibliothek abhängig, nutzte jedoch ab diesem Zeitpunkt eine eigens Entwickelte Bibliothek namens libcontainer.
+Diese neue Bibliothek wurde entwickelt um weitere Isolationstechnologien zu nutzen außerdem war Docker nun in der Lage alle nötigen Komponenten aus einer Hand zu bieten.
+Dies gab auch Microsoft die möglichkeit Docker unter Windows lauffähig zu machen da alle Komponenten veröffentlicht wurden und allgemein als Standard angesehen werden.
+Eine weitere sehr essentielle Komponente stellt UnionFS dar.
+Dies ist ein Dateisystem, welches die Fähigkeit besitzt unterschiedliche Schichten (Standorte) von Dateien zu bündeln und einem Prozess zur Verfügung zu stellen.
+In Docker wird dies genutzt, um nur neue oder veränderte Dateien dem Container Verfügbar zu machen um so die Geschwindigkeit zu erhöhen und beim Einsatz von großen Mengen an Containern Speicherplatz zu sparen.
+
+
+\section{Welche Funktionen enthält Docker ?}
 
 
 
-
-\section{Fähigkeiten und Eigenschaften von Docker ?}
 
 \section{Vorteile und Nachteile von Docker}
 
