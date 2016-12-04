@@ -114,14 +114,6 @@ Mögliche Alternativen und deren Unterschiede, sowie ein Ausblick in die Zukunft
 
 \chapter{Docker Grundlagen} % (fold)
 \label{sec:grundlagen}
-Die Gliederung des Hauptteils der Arbeit („Ich sage, was ich zu sagen habe“) wird
-durch die Struktur des Themas vorgegeben. Hier liegt der Schwerpunkt jeder wissen-
-schaftlichen Arbeit. Sinnvoll sind kurze Einleitungen am Beginn jedes Gliederungs-
-punktes. Hierbei geht es darum, wichtige Details zu erläutern, welche man z.B. durch
-grafische Darstellungen verdeutlichen kann. Beginnen Sie jede Überschrift immer mit
-Großbuchstaben! Allgemein ist es sinnvoll, den Inhalt des Hauptteils vom Allgemeinen
-zum Speziellen aufzubauen. Wichtig ist es, den roten Faden in der Arbeit beizubehal-
-ten.
 
 \section{Was ist Docker ? Was versteht man darunter ?}
 Die Bezeichnung Docker, findet schon lange nicht nur im Cloud spezifischen Umfeld erwähnung.
@@ -135,7 +127,7 @@ Auf der Offiziellen Seite wird diese Frage mit folgendem Satz beantwortet :
 	\footnote[1]{Vgl. https://www.docker.com/what-docker}
 	"`\textit{Docker is the world's leading software containerization platform}"
 \end{quote}
-Da diese Aussage wenig bis keinen Informationsgehalt bietet, macht es sinn, sich zuerst einmal die Grundlegenden Konzepte und historische Entwicklung der Container Virtualisierung zu betrachten. 
+Da diese Aussage wenig bis keinen Informationsgehalt bietet, macht es sinn, sich zuerst einmal die Grundlegenden Konzepte und historische Entwicklung der Container Virtualisierung anzuschauen. 
 
 \section{Die Geschichte, der Ursprung und Entwicklung von Docker}
 Wie so viele Entwicklungen im technischen Umfeld sind die Konzepte und ersten Umsetzungen der Container Virtualisierung schon weitaus älter als man vermuten sollte.
@@ -191,10 +183,83 @@ Dies ist ein Dateisystem, welches die Fähigkeit besitzt unterschiedliche Schich
 In Docker wird dies genutzt, um nur neue oder veränderte Dateien dem Container Verfügbar zu machen um so die Geschwindigkeit zu erhöhen und beim Einsatz von großen Mengen an Containern Speicherplatz zu sparen.
 
 
-\section{Welche Funktionen enthält Docker ?}
+\section{Welche Funktionen enthält Docker /Docker Workflow ?}
+Aufbauend auf diesen Grundlagen, soll nun eine mögliche Vorgehensweise erläutert werden, welche den Einsatz von Containern beschreibt.
+Zuerst sollten jedoch die einzelnen Komponenten vorgesetellt werden :
 
+\begin{itemize}
+	\item \textbf{Docker daemon}: Docker nutzt eine Client-Server Architektur wobei der Daemon einen Serverseitigen Prozess darstellt, welcher die Aufgabe hat Container zu erstellen, auszuführen und zu verteilen.
+	
+	\item \textbf{Docker CLI}: Der Docker Client hat die Möglichkeit über eine REST API mit dem Docker daemon zu kommunizieren und Befehle zu übermitteln.
+	
+	\item \textbf{Docker Image Index}: Ein öffentliches oder Privates Verzeichnis über alle Docker Images welche vorhanden sind. Möchte man ein Image ausführen, wird meist zuerst lokal nach solchem gesucht, sollte der Prozess nicht fündig geworden sein, wird im Docker eigenen Repository DockerHub weiter gesucht, welche sehr viele spezielle Images anbietet.\\
+	
+	\item \textbf{Docker Containers}: Ein Container, welcher sich meist aus mehreren Images zusammen stellt. Diese enthalten alle nötigen Bibliotheken/Tools und Quellcode um die Applikation auszuführen.
+	Wenn ein solcher Container angelegt wird, wird wie in Abbildung 2.3 zu sehen ein neuer Layer angelegt. Dieser kann dann später alle Veränderungen aufnehmen.
+	
+	\item \textbf{Docker Images}: Stellt ein Dateisystem mit verschiedenen Parametern dar welches nur gelesen aber nicht beschrieben werden kann.
+	
+	\item \textbf{Dockerfiles}: Skripte welche den Bau eines Images vereinfachen und automatisieren.
+\end{itemize}
 
+\begin{figure}
+	\centering
+	\caption{Container-Images}
+	\includegraphics[width=15cm, height=8cm, scale=0.3]{container-images.png}
+	Quelle: https://docs.docker.com/engine/userguide/storagedriver/imagesandcontainers/
+\end{figure}
 
+Das zusammenspiel dieser Komponenten, sorgt dafür, dass die Erstellung , Ausführung und Administration von Docker Containern sehr schnell und einfach funktioniert.
+Dies soll nun anhand einer Webapplikation verdeutlicht werden.
+Hierführ gehen wir davon aus, dass Docker bereits installiert und wir  eine  simple "Hello World !" Django Applikation erstellt haben.
+Diese nutzt folgende Technologien : Python 3 mit Django und Gunicorn als Web Server.
+
+1. Um die Erstellung des Containers zu erleichtern, wird im Hauptverzeichnis der Applikation eine requirements.txt angelegt welche unsere Bedingungen enthält.\\
+In diesem Fall :
+
+Django==1.9.4
+gunicorn==19.6.0
+
+2. Nun soll ein script erstellt werden, welches später die richtige Ausführung des Web Servers übernehmen soll.
+Hierzu wird eine start.sh Datei erstellt welche folgenden Inhalt besitzt :
+
+\#!/bin/bash\\
+exec gunicorn helloworld.wsgi:application \ \\
+--bind 0.0.0.0:8000 \ \\
+--workers 3 \\ 
+
+Über den exec Befehl wird hierbei Gunicorn mit unserer helloworld applikation gestartet, welche wir über die lokale Adresse 0.0.0.0 und den Port 8000 ansprechen wollen. Zur Sicherheit und verbesserten Bearbeitung von anfragen werden zusätzlich drei "Arbeiter" erstellt.
+
+3. Es kann damit begonnen werden eine Dockerfile im Hauptverzeichnis zu erstellen welche unterschiedliche Befehle beinhalten kann, um die Umgebung anzupassen.
+
+\# Nutzt ein vorgefertigtes Python3 Image von DockerHub als Basis
+FROM python:3-onbuild
+
+\# Kopiert den Inhalt des Verzeichnises an die angegebene Stelle innerhalb des Containers 
+COPY . /usr/src
+
+\# Öffnet den Port 8000 um eine Kommunikation zu ermöglichen
+EXPOSE 8000
+
+\# führt das Skript des Web Servers aus
+CMD ["usr/src/start.sh"]
+
+4. Das Image muss nun über folgenden Befehl gebaut werden :
+
+sudo docker build -t helloworld .
+
+Dies führt docker mit root rechten aus um innerhalb des momentanen Verzeichnisses die Dockerfile abzuarbeiten und einen Container mit dem namen helloworld zu erstellen.
+
+5. Als letzter Schritt muss der Container über das Terminal gestartet werden :
+
+sudo docker run -it -p 8000:8000 helloworld
+
+Dies führt den Docker Container helloworld aus und verbindet sich über den Port 8000 mit dem Web Server.
+
+Werden nun Änderungen an der Applikation vorgenommen müssen nur noch die letzten zwei Schritte ausgeführt werden.
+Hierdurch können Neuerungen an Software Systemen sehr schnell umgesetzt und in Betrieb genommen werden ohne mit Komplikationen konfrontiert zu werden.
+Dieses kleine Beispiel kann nicht alle Funktionalitäten von Docker umfassen, gibt aber einen ersten Einblick in die Arbeit mit Containern.
+Ansatzpunkte welche das dargestellte Beispiel erweitern , sind die Verlinkung von Containern (sollte z.b. eine Datenbank hinzukommen) oder auch das erstellen von eigenen Basis Images welche dann veröffentlicht und verteilt werden können.
 
 \section{Vorteile und Nachteile von Docker}
 
