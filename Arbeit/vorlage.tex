@@ -262,14 +262,65 @@ Dieses kleine Beispiel kann nicht alle Funktionalitäten von Docker umfassen, gi
 Ansatzpunkte welche das dargestellte Beispiel erweitern , sind die Verlinkung von Containern (sollte z.b. eine Datenbank hinzukommen) oder auch das erstellen von eigenen Basis Images welche dann veröffentlicht und verteilt werden können.
 
 \section{Vorteile und Nachteile von Docker}
+Um die im Kapitel Grundlagen zusammen getragenen Informationen zu bündeln wird nun auf die allgemeinen Vor- und Nachteile der Docker Container eingegangen.
+
+Vorteile :
+
+- Container sind extrem klein und skalierbar wodurch sie innerhalb kürzerster Zeit erzeugt und ausgeführt werden können um veränderten Anforderungen gerecht zu werden.
+- Sie verhalten sich auf jeder Umgebung immer gleich und man kann dadurch sicher sein bei einem lauffähigen Container auf keine Probleme zu stoßen.
+- Beinhalten im Vergleich zu VMs keinen Overhead im Bezug auf das Betriebssystem
+- Prozessen können gezielt Ressourcen zugewiesen werden
+- Viele vorgefertigte Applikationen z.B. Jenkins, PostgreSQL, Ubuntu, Wordpress stehen über DockerHub zur Verfügung und sind innerhalb weniger Sekunden einsatzbereit.
+- Durch den Einsatz von Containern, können Entwickler Software schneller entwickeln und sie in einer Produktivumgebung testen.
+- Verringert die Komplexität der Entwicklung, da jeder mit der exakt selben Umgebung arbeitet.
+- Sind durch ihre Größe und Isolation sehr gut für Microservices geeignet 
+- Umgebungen werden automatisiert erstellt wodurch Zeit eingespart wird
+
+Nachteile :
+
+- Leichtsinnigkeit kann zu Sicherheitsproblemen führen, da alle Container auf denselben Kernel zugreifen
+- Da Docker Images nur lesbar sind müssen Daten extern über Volumes zur Verfügung gestellt werden
+- Docker kann auf Windows und MacOSX ausgeführt werden, verliert jedoch auf diesen Plattformen an Geschwindigkeit
+
+Es sei jedoch gesagt, dass Docker einer wahnsinnig schnellen Entwicklung unterliegt und einige der genannten Negativ Aspekte bereits bearbeitet werden.
+Man kann davon ausgehen, dass auch im bereich Monitoring und Usability noch viel geschehen wird.
 
 % chapter grundlagen (end)
 
 \chapter{Docker im Produktiveinsatz}
-
 \section{Anwendungsbereiche - Wer nutzt Docker ?}
+Es ist nicht verwunderlich, dass Docker von einer Firma wie dotCloud entwickelt wurde.
+Im Bereich von PAAS war der Druck wie auch der Wunsch, auf Veränderungen im Anforderungsverhalten der Nutzer, schnell und automatisiert reagieren zu können, am stärksten spürbar. 
+Ein Blick auf die Unternehmen, welche Docker am stärksten Unterstützen bestätigt diese Behauptung :
+Cisco - Google - Huawei - IBM - Microsoft - Red Hat
+Solch ein Unterstützer Stamm, zeigt deutlich wie wichtig diese Technology in Zukunft sein wird.
+
+\begin{figure}
+	\centering
+	\caption{docker-adoption}
+	\includegraphics[width=15cm, height=9cm, scale=0.3]{docker-adoption.png}
+	Quelle: https://www.datadoghq.com/docker-adoption/
+\end{figure}
+
+Betrachtet man Abbildung 3.1 wird deutlich, dass gerade im Webservice Bereich in Verbindung mit BigData Anwendungen, Docker am stärksten eingesetzt wird.
+Um jedoch eine Vorstellung des Umfangs zu bekommen in wieweit Container eingesetzt werden, hilft ein Zitat von Joe Beda, Software Entwickler bei Google, welcher im Jahre 2014 folgendes verkündete.
+
+\begin{quote}
+	\footnote[1]{Vgl. https://speakerdeck.com/jbeda/containers-at-scale}
+	"`\textit{Everything at Google runs in a Container}"\\
+	"`\textit{We start over 2 billion containers per week.}"
+\end{quote}
+
+Anwendungsbereiche, welche Docker bereits im Produktiveinsatz nutzen, beschränken sich jedoch nicht nur auf große Cloud Dienstleister.
+Gerade im Bereich der Software Entwicklung beginnen viele Teams Docker für sich zu entdecken um Probleme und barrieren bei DevOps zu überwinden.
+Der Grund hierbei liegt in der einfachen Art und Weise unterschiedlichste Umgebungen und Tools zur Verfügung zu stellen.
+Diese unterstützen den Entwickler nicht nur , sondern geben ihm die Möglichkeit Software in einer Produktivumgebunge zu entwickeln und testen.
 
 \section{Tools - Kubernetes / Docker Swarm}
+Der Einsatz von großen Mengen an Containern erzeugt ganz natürlich einen enormen Verwaltungs und Konfigurationsaufwand.
+Aus diesem Grund entwickeln sich momentan mehrere Tools welche die Aufgabe und Verwaltung zu einem großen Teil automatisieren.
+Schon bevor Docker veröffentlicht wurde, experimentierte Google mit Containern und entwickelte hierfür schon Tools zur Administration selbiger.
+Nachdem die Entwickler bei Google auf Docker aufmerksam wurden, bauten sie eine Unterstützung für Docker unter Kubernetes ein
 
 
 \section{Alternativen und Unterschiede ?}
