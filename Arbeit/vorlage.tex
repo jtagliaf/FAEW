@@ -85,27 +85,38 @@
 \section{Motivation} % (fold)
 \label{sec:motivation}
 
-Technologien welche im Big Data und Cloud Umfeld entstanden und gewachsen sind, werden immer häufiger auch in anderen Bereichen eingesetzt. So entstand die Virtualisierung von Betriebssystemen als Grundlage des Cloud Computing um auf individuelle Wünsche und eine stetig schwankende Ressourcenverteilung zu reagieren. So wie diese Technology ihren Weg in viele weitere Bereiche geebnet hat, findet die Container Virtualisierung eine immer vielseitigere Anwendung.
-Getragen und weiterentwickelt von Branchengrößen wie Google oder IBM ist die Container Virtualisierung momentan eine der sich am schnellsten wachsenden Bereiche der Informatik.
-Sie verspricht eine noch stärkere flexibilität und automatisierung von Systemen und Ressourcen und ist deshalb ein relevantes Thema für jede Branche, welche mit Soft- und Hardwaresystemen in Kontakt kommt.
+In einer extrem kompetitiven wirtschaftlichen Umgebung, welche sich durch die Weiterentwicklung von technischen Systemen immer schneller und vor allem grundlegend verändert,
+ist es notwendig, seine Dienste auf einer flexiblen und skalierbaren Basis zu betreiben.\\
+\\
+Auf diesem Hintergrund, sind viele Technologien im Big Data und Cloud Umfeld entstanden und gewachsen.
+Allen voran die Virtualisierung von Ressourcen und Systemen als Grundlage des Cloud Computing, mit dem Ziel auf individuelle Wünsche und eine stetig schwankende Ressourcenverteilung zu reagieren.
+So wie diese Technologie ihren Weg in viele weitere Bereiche geebnet hat, findet die Container Virtualisierung eine immer vielseitigere und intensivere Anwendung.
+Getragen und weiterentwickelt von Branchengrößen wie Google oder IBM ist die Container Virtualisierung momentan eine der sich am schnellsten wachsenden Bereiche der Informatik welche eine noch stärkere Flexibilität und Automatisierung von Systemen und Ressourcen verspricht.\\
+\\
+Aus diesem Grund, stellt die Container Virtualisierung ein relevantes Thema für jede Branche dar, welche mit Soft- und Hardwaresystemen in Kontakt kommt um in einem stetig veränderten Markt zu bestehen.
 
 
 % section motivation (end)
 
 \section{Ziel der Arbeit} % (fold)
 \label{sec:ziel_der_arbeit}
-Diese Ausarbeitung soll als Einstieg in den Bereich Container Virtualisierung dienen und dabei Docker als zentrale Komponente behandeln und vorstellen.
-Es soll ein umfassender Einblick in die Thematik und deren unterschiedliche herangehensweisen erörtert werden, wodurch eingeschätzt werden kann, inwieweit sich die Container Virtualisierung für individuelle Einsatzzwecke eignet.
+
+Diese Ausarbeitung soll als Einstieg in den Bereich Container Virtualisierung dienen und dabei Docker als zentrale Komponente behandeln und vorstellen.\\
+\\
+Es soll ein umfassender Einblick in die Thematik und deren unterschiedliche Herangehensweisen erörtert werden, wodurch eingeschätzt werden kann, inwieweit sich die Container Virtualisierung für individuelle Einsatzzwecke eignet.
+Dabei werden Anregungen für weitere Tools und Systeme gegeben welche diese Funktionalitäten erweitern und teilweise automatisieren. 
 
 % section ziel_der_arbeit (end)
 
 \section{Vorgehensweise} % (fold)
 \label{sec:vorgehensweise}
 
-Um dieses Ziel zu erreichen, werden die Grundlagen in Form der Idee und grundlegenden Historie und deren Konzepte, welche die Basis von Docker beinhalten, erläutert.
-Daraufhin wird die Umsetzung dieser Konzepte und deren Erweiterungen in Docker betrachtet und daraus auf mögliche Vor- und Nachteile geschlossen.
-Aufbauend auf diesen Grundlagen, werden Anwendungsbereiche vorgestellt, in dennen Docker in einem produktiven Umfeld eingesetzt wird und welche Tools den massiven und verteilten Einsatz von Containern erleichtern.
-Mögliche Alternativen und deren Unterschiede, sowie ein Ausblick in die Zukunft der Container Virtualisierung sollen diese Arbeit abrunden.
+Um dieses Ziel zu erreichen, werden die Grundlagen in Form der Idee und grundlegenden Historie und deren Konzepte, welche die Basis von Docker darstellen, erläutert.
+Weiter wird die Umsetzung dieser Konzepte und deren Erweiterungen betrachtet und auf Basis eines einfachen Anwendungsbeispieles erläutert.
+Anschließend werden die Ergebnisse gebündelt und in Vor- und mögliche Nachteile unterteilt.\\
+\\
+Aufbauend auf diesen Grundlagen werden Anwendungsbereiche vorgestellt, in denen Docker in einem produktiven Umfeld eingesetzt wird und welche Tools den massiven und verteilten Einsatz von Containern erleichtern.
+Mögliche Alternativen und deren Unterschiede, sowie ein Ausblick in die Zukunft der Container Virtualisierung, sollen diese Arbeit abschließen.
 
 
 
@@ -358,36 +369,29 @@ Dies wird durch den kompletten Support der Docker API möglich und folgt auch hi
 Seit Version 1.12.0 ist Swarm nun ein fester Bestandteil der Docker Engine.
 https://docs.docker.com/engine/swarm/
 
+Bevor Docker überhaupt veröffentlicht wurde, experimentierte Google schon seit langem mit LXC Containern und entwarf hierfür eine Cluster Lösung.
+Mit der steigenden Beliebtheit von Docker stellte Google schließlich sein System Kubernetes als Open Source Lösung zur Verfügung.
+Die Idee der Bündelung von Containern unterscheidet sich kaum zwischen Docker Swarm und Kubernetes.
+Jedoch kann Kubernetes auf einen Erfahrungsschatz von über 15 Jahren im produktiven Umfeld zurück greifen.
+Einige Funktionen sind z.B. :
 
+- Einem Container Bündel (auch Pod genannt) können klare CPU und RAM vorgaben erteilt werden, wodurch automatisiert der optimale Knoten ausgewählt werden kann.
+- Kubernetes entscheidet automatisiert wieviele Pods gerade aktiv sein müssen.
+- Es ist möglich einen Rollout im laufenden Betrieb durchzuführen ohne den Betrieb hierfür zu unterbrechen. Sollte dabei ein Problem auftauchen, wird automatisch ein Rollback durchgeführt.
+- Support für unterschiedlichste Speichermöglichkeiten. Egal ob Lokal oder von einem Cloud Dienstleister.
+- Automatisierte Bereinigung von abgestürzten Containern und Knotenpunkten
 
-
-
-
-Gerade wenn es darum geht in einem Produktiven Umfeld im großen Stil Container einzusetzen ist eine Lösung wie Docker Swarm unabdingbar.
-
-Vorteile dieses Tools sind z.B.:
-
-- Einfacher Austausch von teilen des Backends
-- High Availabilty und Failover support
-- 
-
-
-
-
-Schon bevor Docker veröffentlicht wurde, experimentierte Google mit Containern und entwickelte hierfür schon Tools zur Administration selbiger.
-Eines dieser Tools ist Kubernetes, ein Container-Cluster-Manager welcher dafür zuständig ist automatisiert Container zu starten, zu skalieren und über mehrere Cluster hinweg zu verwalten.
-Dieses Tool wurde 2015 unter der Apache 2.0 Lizenz veröfentlicht.
-Kubernetes ist nicht an Docker gebunden, war jedoch bis dahin die einzigste Möglichkeit diese Funktionalitäten effektiv einzusetzen.
-Docker entwickelte jedoch schon sehr bald eine Hauseigene Alternative unter dem Namen Docker Swarm.
-Diese wurde ende 2015 veröffentlicht.
-Die Funktionsweise beruht im Kern darauf, mehrere Host Systeme zu einem zentralen Virtuellen Docker Host zu bündeln(siehe Abbildung 3.2).
-
-
-
-
-
+Obwohl Docker Swarm und Kubernetes versuchen diesselben Probleme zu lösen, so sind die Lösungsansätze doch sehr verschieden und können je nach Anwendungsfall besser oder aber auch schlechter sein.
 
 \section{Alternativen und Unterschiede ?}
+Wie anfangs betont ist die Geschichte der Container Virtualisierung weitaus älter und umfangreicher als man dies vermuten möchte.
+Deshalb stellt sich auch die Frage, welche Alternativen es zu Docker gibt.
+Aus diesem Grund, soll hier eine Auflistung einiger Alternativen und derere Unterschiede entstehen.
+
+
+
+
+
 
 \section{Wieso gerade Docker ?}
 
