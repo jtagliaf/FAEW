@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.12.6)  6 DEC 2016 17:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.12.6)  6 DEC 2016 19:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -899,233 +899,254 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language append on input line 129.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language append on input line 129.
+
+Underfull \hbox (badness 10000) in paragraph at lines 131--139
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 131--139
+
+ []
+
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 138.
+(Font)              <7> on input line 141.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 138.
+(Font)              <5> on input line 141.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 143.
+(babel)             in language append on input line 146.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 143.
+(babel)             in language append on input line 146.
+
+Underfull \hbox (badness 10000) in paragraph at lines 148--167
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 148--167
+
+ []
+
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 156.
+(babel)             in language append on input line 167.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 156.
+(babel)             in language append on input line 167.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 156.
+(babel)             in language append on input line 167.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 156.
+(babel)             in language append on input line 167.
 [3
 
 ]
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 157.
+(babel)             in language append on input line 169.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 157.
- <images/dockerVM.jpg, id=175, 881.2925pt x 515.9275pt>
+(babel)             in language append on input line 169.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language append on input line 177.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language append on input line 177.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language append on input line 177.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language append on input line 177.
+ [4] <images/dockerVM.jpg, id=179, 881.2925pt x 515.9275pt>
 File: images/dockerVM.jpg Graphic file (type jpg)
 
 <use images/dockerVM.jpg>
-Package pdftex.def Info: images/dockerVM.jpg used on input line 169.
+Package pdftex.def Info: images/dockerVM.jpg used on input line 181.
 (pdftex.def)             Requested size: 264.38979pt x 154.77943pt.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 178.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 178.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 178.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 178.
- [4]
+
 <images/docker-execdriver-diagram.png, id=180, 709.65125pt x 679.53876pt>
 File: images/docker-execdriver-diagram.png Graphic file (type png)
 
 <use images/docker-execdriver-diagram.png>
 Package pdftex.def Info: images/docker-execdriver-diagram.png used on input lin
-e 185.
+e 197.
 (pdftex.def)             Requested size: 212.897pt x 203.8632pt.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 197.
+(babel)             in language append on input line 207.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 197.
+(babel)             in language append on input line 207.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 200.
+(babel)             in language append on input line 207.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 200.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 200.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 200.
+(babel)             in language append on input line 207.
  [5 <./images/dockerVM.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 206--207
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language append on input line 209.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language append on input line 209.
+
+Underfull \hbox (badness 10000) in paragraph at lines 218--219
 
  []
 
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 210.
+(babel)             in language append on input line 219.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 210.
+(babel)             in language append on input line 219.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 210.
+(babel)             in language append on input line 219.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 210.
+(babel)             in language append on input line 219.
 [6 <./images/docker-execdriver-diagram.png>]
 <images/container-images.png, id=190, 742.775pt x 450.68375pt>
 File: images/container-images.png Graphic file (type png)
 
 <use images/container-images.png>
-Package pdftex.def Info: images/container-images.png used on input line 219.
+Package pdftex.def Info: images/container-images.png used on input line 231.
 (pdftex.def)             Requested size: 222.83421pt x 135.20616pt.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 234.
+(babel)             in language append on input line 239.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 234.
+(babel)             in language append on input line 239.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 234.
+(babel)             in language append on input line 239.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 234.
+(babel)             in language append on input line 239.
  [7 <./images/container-images.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 237--241
+Underfull \hbox (badness 10000) in paragraph at lines 249--253
 
  []
 
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 274.
+(babel)             in language append on input line 282.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 274.
+(babel)             in language append on input line 282.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 274.
+(babel)             in language append on input line 282.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 274.
+(babel)             in language append on input line 282.
 [8]
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 275.
+(babel)             in language append on input line 287.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 275.
+(babel)             in language append on input line 287.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 301.
+(babel)             in language append on input line 313.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 301.
+(babel)             in language append on input line 313.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 301.
+(babel)             in language append on input line 313.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 301.
+(babel)             in language append on input line 313.
  [9]
 chapter 3.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 301.
+(babel)             in language append on input line 313.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 301.
+(babel)             in language append on input line 313.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 302.
+(babel)             in language append on input line 314.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 302.
+(babel)             in language append on input line 314.
 <images/docker-adoption.png, id=205, 803.0pt x 448.67625pt>
 File: images/docker-adoption.png Graphic file (type png)
 
 <use images/docker-adoption.png>
-Package pdftex.def Info: images/docker-adoption.png used on input line 312.
+Package pdftex.def Info: images/docker-adoption.png used on input line 324.
 (pdftex.def)             Requested size: 240.90186pt x 134.60391pt.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 330.
+(babel)             in language append on input line 342.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 330.
+(babel)             in language append on input line 342.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 340.
+(babel)             in language append on input line 352.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 340.
+(babel)             in language append on input line 352.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 340.
+(babel)             in language append on input line 352.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 340.
+(babel)             in language append on input line 352.
  [10
 
 ]
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 351.
+(babel)             in language append on input line 363.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 351.
+(babel)             in language append on input line 363.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 351.
+(babel)             in language append on input line 363.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 351.
+(babel)             in language append on input line 363.
  [11 <./images/docker-adoption.png>]
 <images/docker-swarm.png, id=217, 1894.07625pt x 988.69376pt>
 File: images/docker-swarm.png Graphic file (type png)
 
 <use images/docker-swarm.png>
-Package pdftex.def Info: images/docker-swarm.png used on input line 356.
+Package pdftex.def Info: images/docker-swarm.png used on input line 368.
 (pdftex.def)             Requested size: 568.22726pt x 296.61041pt.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 377.
+(babel)             in language append on input line 389.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 377.
+(babel)             in language append on input line 389.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 377.
+(babel)             in language append on input line 389.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 377.
+(babel)             in language append on input line 389.
  [12 <./images/docker-swarm.png>]
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 386.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 386.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 396.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 396.
-Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language append on input line 398.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language append on input line 398.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 400.
+(babel)             in language append on input line 408.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 400.
+(babel)             in language append on input line 408.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 400.
+(babel)             in language append on input line 410.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 400.
+(babel)             in language append on input line 410.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language append on input line 412.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language append on input line 412.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language append on input line 412.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language append on input line 412.
  [13]
 chapter 4.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 400.
+(babel)             in language append on input line 412.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 400.
+(babel)             in language append on input line 412.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 411.
+(babel)             in language append on input line 423.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 411.
+(babel)             in language append on input line 423.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 411.
+(babel)             in language append on input line 423.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 411.
+(babel)             in language append on input line 423.
 [14
 
 ]
 chapter without number
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 411.
+(babel)             in language append on input line 423.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 411.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 440.
+(babel)             in language append on input line 423.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 452.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 440.
+(babel)             in language append on input line 452.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 440.
+(babel)             in language append on input line 452.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 440.
+(babel)             in language append on input line 452.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 440.
+(babel)             in language append on input line 452.
 [15
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 440.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 452.
  (./vorlage.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 440.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 440.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 452.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 452.
 Package rerunfilecheck Info: File `vorlage.out' has not changed.
-(rerunfilecheck)             Checksum: 3A46E324EB85F90F7253DFAD8A1DB71E;1462.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 440.
+(rerunfilecheck)             Checksum: 2990F66A3C1B3922945A2D87330A9A08;1428.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 452.
  ) 
 Here is how much of TeX's memory you used:
  8434 strings out of 493029
@@ -1145,7 +1166,7 @@ type1/public/lm/lmro12.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb
 ></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/typ
 e1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr
 /share/texmf/fonts/type1/public/lm/lmtt12.pfb>
-Output written on vorlage.pdf (20 pages, 850031 bytes).
+Output written on vorlage.pdf (20 pages, 850453 bytes).
 PDF statistics:
  305 PDF objects out of 1000 (max. 8388607)
  256 compressed objects within 3 object streams

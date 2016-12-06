@@ -126,33 +126,45 @@ Mögliche Alternativen und deren Unterschiede, sowie ein Ausblick in die Zukunft
 \chapter{Docker Grundlagen} % (fold)
 \label{sec:grundlagen}
 
-\section{Was ist Docker ? Was versteht man darunter ?}
-Die Bezeichnung Docker, findet schon lange nicht nur im Cloud spezifischen Umfeld erwähnung.
-Der aufmerksame Nutzer stößst immer öfter schon bei der Installation von Anwendungen auf diesen Term.
-Ein Beispiel hierfür wäre das Test und Entwicklungswerkzeug Jenkins, welches nun an erster Stelle die Option eines Docker Containers als mögliche Installationsquelle zur Verfügung stellt. \cite{jenkins}
-Viele weitere Hersteller welche Werkzeuge anbieten, welche auf unterschiedlichste Bibliotheken und Anwendungen angewiesen sind, greifen immer öfter zu Docker. 
-Hierbei stellt sich jedoch die Frage, was ist Docker ? \\
+\section{Definition}
+
+Die Bezeichnung Docker findet schon lange nicht nur im Cloud spezifischen Umfeld Erwähnung.
+Der aufmerksame Nutzer stößt immer öfter schon bei der Installation von Anwendungen auf diesen Term.\\
+\\
+Ein Beispiel hierfür wäre das Test und Entwicklungswerkzeug Jenkins, welches nun an erster Stelle die Option eines Docker Containers, als mögliche Installationsquelle, zur Verfügung stellt. \cite{jenkins}
+Viele weitere Hersteller, welche Werkzeuge anbieten und auf unterschiedlichste Bibliotheken und Dienste angewiesen sind, greifen immer öfter zu Docker. 
+Hierbei stellt sich jedoch die Frage: „Was ist Docker?“ \\
+\\
 Auf der Offiziellen Seite wird diese Frage mit folgendem Satz beantwortet :
 
 \begin{quote}
 	\footnote[1]{Vgl. https://www.docker.com/what-docker}
 	"`\textit{Docker is the world's leading software containerization platform}"
 \end{quote}
-Da diese Aussage wenig bis keinen Informationsgehalt bietet, macht es sinn, sich zuerst einmal die Grundlegenden Konzepte und historische Entwicklung der Container Virtualisierung anzuschauen. 
+Da diese Aussage wenig bis keinen Informationsgehalt bietet, macht es Sinn, sich zuerst einmal die grundlegenden Konzepte und historische Entwicklung der Container Virtualisierung anzuschauen. 
 
 \section{Die Geschichte, der Ursprung und Entwicklung von Docker}
-Wie so viele Entwicklungen im technischen Umfeld sind die Konzepte und ersten Umsetzungen der Container Virtualisierung schon weitaus älter als man vermuten sollte.
-Es begann alles mit der Idee Services untereinander und vom eigentlichen Host isolieren zu können.
-Dieses Konzept wurde erstmals im Jahre 1979 unter UNIX mit der funktion des "chroot" umgesetzt, diese Funktion isolierte das Hauptverzeichnis eines Prozresse an einem neuen Ort.\\
+
+Wie so viele Entwicklungen im technischen Umfeld sind die Konzepte und ersten Umsetzungen der Container Virtualisierung schon weitaus älter.\\
+\\
+Hierbei tauchten erste Ansätze, welche später den Grundstein darstellen sollten, schon 1979 auf.
+Es begann dabei alles mit der Idee Services untereinander und vom eigentlichen Host isolieren zu können.
+Dieses Konzept wurde erstmals unter UNIX in der Form des "chroot" umgesetzt.
+Diese Funktion war in der Lage das Hauptverzeichnis eines Prozesses zu isolieren indem ihm ein neuer Ort zugewiesen wurde. 
 Erst im Jahre 2000 wurde diese Funktionalität unter FreeBSD mit dem Namen Jails erneut aufgenommen und erweitert.
-Diesmal konnte nicht nur das Dateisystem isoliert werden, sondern auch dazugehörige Benutzer, Netzwerk und dazugehörige Prozesse.\\
-Über die nächsten acht Jahre können viele weitere Technologien gefunden werden, welche diese Funktionalitäten integrieren. Darunter 
-Linux VServer, Oracle Solaris Zones, OpenVZ, Process Container (von Google entwickelt),ControlGroups im Linux Kernel und WPARS.
-2008 entstand dann durch die Entwicklung bei IBM  das Linux Containers project (LXC) welches die unterschiedlichsten Technologien im Container Umfeld zusammen brachte und somit die vollständigste Implementierung eines Linux Container Managements darstellte.
-Die besonderheit von LXC, bestand darin, dass es seine ressourcen komplett aus dem Linux Kernel bezog ohne zusätzliche Software zu benötigen.
-Am 15.03.2013 wurde Docker, durch den dotCloud Gründer Solomon Hykes zum ersten mal der Öffentlichkeit vorgestellt.
-Diese Vorstellung bestand nur aus einem fünf minütigen Vortrag auf der Python Entwickler Konferenz in Kalifornien.
-Verbreitete sich jedoch weltweit mit enormer Geschwindigkeit wodurch das Projekt schnellstmöglich auf GitHub offen gelegt wurde um die weitere Entwicklung voran zu treiben.
+Diesmal konnte nicht nur das Dateisystem isoliert werden, sondern auch dazugehörige Benutzer, Netzwerk und die zugehörigen Prozesse.
+Über die nächsten acht Jahre entstanden somit viele weitere Technologien welche diese Funktionalitäten integrierten.Darunter unter anderem im
+Linux VServer, Oracle Solaris Zones, OpenVZ oder auch die von Google entwickelten Process Container.
+Später wurde dann mit dem Namen ControlGroups ein weiterer wichtiger Baustein Teil des Linux Kernels. 
+Erst 2008 entstand dann durch die Entwicklung bei IBM  das Linux Containers project (LXC) welches die unterschiedlichen Technologien im Container Umfeld zusammen brachte und somit die vollständigste Implementierung eines Linux Container Managements darstellte.\\
+\\
+Die Besonderheit von LXC, bestand darin, dass es seine Ressourcen komplett aus dem Linux Kernel bezog ohne dazu zusätzliche Software zu benötigen und somit den Einsatz enorm erleichterte.
+Am 15.03.2013 wurde dann Docker, durch den dotCloud Gründer Solomon Hykes zum ersten mal der Öffentlichkeit vorgestellt.
+Wobei diese Vorstellung  nur aus einem fünf minütigen Vortrag auf der Python Entwickler Konferenz in Kalifornien bestand,
+verbreitete sich diese Information weltweit mit enormer Geschwindigkeit.
+Dies hatte zur Folge, dass große Firmen, allen voran Google großes Interesse an diesem Projekt verkündeten und es daraufhin auf GitHub offen gelegt wurde.
+Diese offene Entwicklung auch gegenüber drittanbietern, welche eigene Interpretationen und Tools beisteuern, 
+
 
 \section{Wie funktioniert Docker ?}
 
