@@ -10,6 +10,8 @@
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage{setspace}
+\usepackage{listings}
+
 
 \usepackage{hyperref}
 \hypersetup{
@@ -143,141 +145,145 @@ Auf der Offiziellen Seite wird diese Frage mit folgendem Satz beantwortet :
 \end{quote}
 Da diese Aussage wenig bis keinen Informationsgehalt bietet, macht es Sinn, sich zuerst einmal die grundlegenden Konzepte und historische Entwicklung der Container Virtualisierung anzuschauen. 
 
-\section{Die Geschichte, der Ursprung und Entwicklung von Docker}
+\section{Konzepte und Entwicklungsgeschichte}
 
 Wie so viele Entwicklungen im technischen Umfeld sind die Konzepte und ersten Umsetzungen der Container Virtualisierung schon weitaus älter.\\
 \\
 Hierbei tauchten erste Ansätze, welche später den Grundstein darstellen sollten, schon 1979 auf.
-Es begann dabei alles mit der Idee Services untereinander und vom eigentlichen Host isolieren zu können.
+Es begann dabei alles mit der Idee Services untereinander und vom eigentlichen Host System isolieren zu können.\\
+\\
 Dieses Konzept wurde erstmals unter UNIX in der Form des "chroot" umgesetzt.
-Diese Funktion war in der Lage das Hauptverzeichnis eines Prozesses zu isolieren indem ihm ein neuer Ort zugewiesen wurde. 
+Diese Funktion war in der Lage das Hauptverzeichnis eines Prozesses zu isolieren, indem ihm ein neuer Ort zugewiesen wurde. 
 Erst im Jahre 2000 wurde diese Funktionalität unter FreeBSD mit dem Namen Jails erneut aufgenommen und erweitert.
 Diesmal konnte nicht nur das Dateisystem isoliert werden, sondern auch dazugehörige Benutzer, Netzwerk und die zugehörigen Prozesse.
-Über die nächsten acht Jahre entstanden somit viele weitere Technologien welche diese Funktionalitäten integrierten.Darunter unter anderem im
+Über die nächsten acht Jahre entstanden somit viele weitere Technologien, welche diese Funktionalitäten integrierten. Darunter unter anderem der
 Linux VServer, Oracle Solaris Zones, OpenVZ oder auch die von Google entwickelten Process Container.
-Später wurde dann mit dem Namen ControlGroups ein weiterer wichtiger Baustein Teil des Linux Kernels. 
-Erst 2008 entstand dann durch die Entwicklung bei IBM  das Linux Containers project (LXC) welches die unterschiedlichen Technologien im Container Umfeld zusammen brachte und somit die vollständigste Implementierung eines Linux Container Managements darstellte.\\
+Später wurde dann mit ControlGroups, ein weiterer wichtiger Baustein, Teil des Linux Kernels. 
+Erst 2008 entstand dann, durch die Entwicklung bei IBM, das Linux Containers project (LXC) welches die unterschiedlichen Technologien, im Container Umfeld, zusammen brachte und somit die vollständigste Implementierung eines Linux Container Managements darstellte.
+Die Besonderheit von LXC bestand darin, dass es seine Ressourcen komplett aus dem Linux Kernel bezog ohne dazu zusätzliche Software zu benötigen und somit den Einsatz enorm erleichterte.\\
 \\
-Die Besonderheit von LXC, bestand darin, dass es seine Ressourcen komplett aus dem Linux Kernel bezog ohne dazu zusätzliche Software zu benötigen und somit den Einsatz enorm erleichterte.
-Am 15.03.2013 wurde dann Docker, durch den dotCloud Gründer Solomon Hykes zum ersten mal der Öffentlichkeit vorgestellt.
-Wobei diese Vorstellung  nur aus einem fünf minütigen Vortrag auf der Python Entwickler Konferenz in Kalifornien bestand,
-verbreitete sich diese Information weltweit mit enormer Geschwindigkeit.
-Dies hatte zur Folge, dass große Firmen, allen voran Google großes Interesse an diesem Projekt verkündeten und es daraufhin auf GitHub offen gelegt wurde.
-Diese offene Entwicklung auch gegenüber drittanbietern, welche eigene Interpretationen und Tools beisteuern, 
+Am 15.03.2013 wurde Docker durch den dotCloud Gründer Solomon Hykes, zum ersten mal der Öffentlichkeit, in einem fünf minütigen Vortrag vorgestellt.
+Diese Information traf jedoch einen Nerv, wodurch sich diese Ankündigung innerhalb kürzester Zeit weltweit verbreitete.
+Dies hatte zur Folge, dass große Firmen, allen voran Google, großes Interesse an diesem Projekt verkündeten und es daraufhin auf GitHub offen gelegt wurde.
 
 
-\section{Wie funktioniert Docker ?}
+\section{Funktionsweise}
 
-Abgesehen von der schnellen Verbreitung von Docker, war vielen Interessenten die eigenltiche Funktionsweise nicht vollständig bewusst.
-Docker versprach, ein Stück Software in ein komplettes Dateisystem zu verpacken, welches alles beeinhaltete was für das Ausführen dieser  nötig ist. Dazu gehört der Quellcode, System Bibliotheken/Tools und die Ausführumgebung. Dies sorgte dafür, dass sich die Software immer gleich verhält egal auf welcher Umgebung sie ausgeführt wird. 
-Hinzu kam, das Container aufgrund ihrere Größe und Isolation  beliebig gestartet oder gestoppt werden konnten, ohne das Host System zu beeinflussen.
-Einige dieser Eigenschaften, werden oftmals sehr gerne mit denen Virtueller Maschinen verglichen, da es auf den ersten Blick sehr viele Ähnlichkeiten aufweist.
-Die Entwickler von Docker, distanzieren sich jedoch sehr klar von diesem Vergleich und machen darauf aufmerksam, dass Docker sehr viel mehr ist.
-Um jedoch die Grundlegenden funktionsweisen zu erläutern, macht es Sinn diesen Vergleich zu bemühen.
-
+Abgesehen von der schnellen Verbreitung von Docker war vielen Interessenten die eigentliche Funktionsweise des Frameworks nicht vollständig bewusst.
+Docker versprach, ein Stück Software in ein komplettes Dateisystem zu verpacken, welches alles beinhaltet was für das Ausführen dieser  nötig ist. 
+Konkret bedeutet dies den Quellcode, System Bibliotheken und mögliche zusätzliche Dienste oder Middleware. 
+Die Folge aus diesem vorgehen ist , dass sich die Software immer gleich verhält, egal auf welcher Umgebung sie ausgeführt wird. 
+Hinzu kommt, das Container aufgrund ihrer Größe und Isolation  beliebig gestartet oder gestoppt werden können, ohne das Host System zu beeinflussen.\\
+\\
+Einige dieser Eigenschaften werden oftmals sehr gerne mit denen virtueller Maschinen verglichen, da es auf den ersten Blick sehr viele Ähnlichkeiten aufweist.
+Die Entwickler von Docker distanzieren sich jedoch sehr klar von diesem Vergleich und machen darauf aufmerksam, dass Docker sehr viel mehr ist.
+Docker hatte auch nie das bestreben danach, virtuelle Maschinen zu ersetzen, da beide Lösungen teils sehr unterschiedliche Anforderungen erfüllen sollen. 
+Um jedoch die grundlegende Funktionsweise und Unterschiede zu erläutern, macht es Sinn diesen Vergleich zu bemühen.\\
 \begin{figure}
 	\centering
 	\caption{VM vs Container}
 	\includegraphics[width=15cm, height=8cm, scale=0.3]{dockerVM.jpg}
 	Quelle: www.docker.com/what-docker
 \end{figure}
+\\
+Wie in der Abbildung 2.1 zu erkennen, liegt ein sehr wesentlicher Unterschied in der Größe der Lösungsansätze, wie auch der Kommunikation zwischen Host-System und Client.
+Da eine virtuelle Maschine über einen Hypervisor mit dem Host-System kommuniziert, bringt es bei jeder Instanz zusätzlich ein komplettes Gast Betriebssystem mit sich.
+Dies führt zu einem erhöhten Ressourcenverbrauch, wodurch nur wenige Instanzen einer Virtuellen Maschine, auf einem Host System ausgeführt werden können.
+Anwendungsbereiche in welchen eine noch stärkere Isolation aus Sicherheitsgründen notwendig ist, greifen deswegen genau aus diesem Grund auf VMs zurück.\\
+\\
+Docker wiederum kann über die Docker Engine direkt die Funktionen des Kernels nutzen und ist dadurch in der Lage mehrere hundert Container gleichzeitig zu betreiben.
+Gerade hier verliert Docker jedoch an Sicherheit, da alle Applikationen auf denselben Kernel zurück greifen müssen.\\
+\\
+\\
+\\
+Damit dies möglich wird, greift Docker auf mehrere Funktionen des Linux Kernels zurück, welche in Abbildung 2.2 dargestellt sind.
+Folgende zwei Funktionsweisen sind hierbei besonders wichtig:
 
-Wie in der Abbildung unschwer zu erkennen, liegt ein sehr wesentlicher Unterschied in der größe der Lösungen.
-Da eine Virtuelle Maschine über einen Hypervisor mit dem Hostsystem kommuniziert bringt es bei jeder Instanz ein komplettes Gast Betriebssystem mit sich. Dies führt dazu, dass nur wenige Instanzen auf einem Host ausgeführt werden können.
-Da jedoch jeder Docker Container den Kernel des Hostsystems nutzt, ist es möglich auf einer Maschine mehrere hundert Container parallel zu betreiben.
-Damit dies möglich wurde, nutzt Docker mehrere Funktionen des Linux Kernels wobei folgende essentiell sind:
-
-- CGroups : Limitiert und verwaltet die Ressourcen wie CPU , Arbeitsspeicher, Netzwerk und Festplattenzugriff welche einer Prozessgruppe zugewiesen werden können. 
-
-- Namespace isolation : Prozessgruppen sind nicht in der Lage die Ressourcen anderer Gruppen zu sehen.
-
+\begin{itemize}
+	\item \textbf{CGroups} : Limitiert und verwaltet die Ressourcen wie CPU , Arbeitsspeicher, Netzwerk und Festplattenzugriff, welche einer Prozessgruppe zugewiesen werden können. 
+	\item \textbf{Namespace isolation} : Prozessgruppen sind nicht in der Lage die Ressourcen anderer Gruppen zu sehen.
+\end{itemize}
 \begin{figure}
 	\centering
 	\caption{Treiber}
-	\includegraphics[width=15cm, height=8cm, scale=0.3]{docker-execdriver-diagram.png}
-	Quelle: http://jancorg.github.io/blog/2015/01/03/libcontainer-overview/
+	\includegraphics[width=13cm, height=9cm, scale=0.3]{docker-execdriver-diagram.png}\\
+	Quelle: http://jancorg.github.io/blog/2015/01/03/libcontainer-overview
 \end{figure}
-
-Bis zur Version 0.9 war Docker von der LXC-Bibliothek abhängig, nutzte jedoch ab diesem Zeitpunkt eine eigens Entwickelte Bibliothek namens libcontainer.
-Diese neue Bibliothek wurde entwickelt um weitere Isolationstechnologien zu nutzen außerdem war Docker nun in der Lage alle nötigen Komponenten aus einer Hand zu bieten.
-Dies gab auch Microsoft die möglichkeit Docker unter Windows lauffähig zu machen da alle Komponenten veröffentlicht wurden und allgemein als Standard angesehen werden.
+Docker war lange Zeit noch von der LXC-Bibliothek abhängig, entwickelte jedoch parallel dazu eine eigene Lösung namens libcontainer, welche seit Version 0.9 standardmäsig verwendet wird. 
+Diese neue Bibliothek wurde entwickelt um weitere Isolationstechniken zu nutzen und gleichzeitig in der Lage zu sein, alle zentralen Komponenten aus einer Hand liefern zu können.
+Die Offenlegung dieser Funktion, gab auch Microsoft die Möglichkeit, Docker unter Windows zu unterstützen und öffnete die Tür für weitere Interessenten eigene Software in diesem Bereich zu entwickeln.\\
+\\
 Eine weitere sehr essentielle Komponente stellt UnionFS dar.
-Dies ist ein Dateisystem, welches die Fähigkeit besitzt unterschiedliche Schichten (Standorte) von Dateien zu bündeln und einem Prozess zur Verfügung zu stellen.
-In Docker wird dies genutzt, um nur neue oder veränderte Dateien dem Container Verfügbar zu machen um so die Geschwindigkeit zu erhöhen und beim Einsatz von großen Mengen an Containern Speicherplatz zu sparen.
+UnionFS ist ein Dateisystem, welches die Fähigkeit besitzt unterschiedliche Schichten (Standorte) von Dateien zu bündeln und anschließend einem Prozess zur Verfügung zu stellen.
+Dies nutzt Docker, um nur neue oder veränderte Dateien dem Container Verfügbar zu machen.
+Hierdurch kann die Geschwindigkeit in der Erstellung und dem Ausführen von Containern erheblich erhöht und beim Einsatz von großen mengen an Containern Speicherplatz gespart werden.
 
 
-\section{Welche Funktionen enthält Docker /Docker Workflow ?}
-Aufbauend auf diesen Grundlagen, soll nun eine mögliche Vorgehensweise erläutert werden, welche den Einsatz von Containern beschreibt.
-Zuerst sollten jedoch die einzelnen Komponenten vorgesetellt werden :
+\section{Aufbau und Beispiel}
 
+Aufbauend auf diesen Grundlagen, sollen nun die einzelnen Komponenten vorgestellt und danach an einem praktischen Beispiel angewandt werden.
+Hierbei liegt der Fokus zuerst auf der Erstellung und Ausführung eines einzelnen Docker Containers.\\
+\\
+Die wichtigsten Komponenten sind :
 \begin{itemize}
-	\item \textbf{Docker daemon}: Docker nutzt eine Client-Server Architektur wobei der Daemon einen Serverseitigen Prozess darstellt, welcher die Aufgabe hat Container zu erstellen, auszuführen und zu verteilen.
-	
+	\item \textbf{Docker daemon}: Docker nutzt eine Client-Server Architektur wobei der Daemon einen serverseitigen Prozess darstellt, welcher die Aufgabe hat Container zu erstellen, auszuführen und zu verteilen.
 	\item \textbf{Docker CLI}: Der Docker Client hat die Möglichkeit über eine REST API mit dem Docker daemon zu kommunizieren und Befehle zu übermitteln.
-	
-	\item \textbf{Docker Image Index}: Ein öffentliches oder Privates Verzeichnis über alle Docker Images welche vorhanden sind. Möchte man ein Image ausführen, wird meist zuerst lokal nach solchem gesucht, sollte der Prozess nicht fündig geworden sein, wird im Docker eigenen Repository DockerHub weiter gesucht, welche sehr viele spezielle Images anbietet.\\
-	
-	\item \textbf{Docker Containers}: Ein Container, welcher sich meist aus mehreren Images zusammen stellt. Diese enthalten alle nötigen Bibliotheken/Tools und Quellcode um die Applikation auszuführen.
-	Wenn ein solcher Container angelegt wird, wird wie in Abbildung 2.3 zu sehen ein neuer Layer angelegt. Dieser kann dann später alle Veränderungen aufnehmen.
-	
+	\item \textbf{Docker Image Index}: Ein öffentliches oder Privates Verzeichnis über alle Docker Images welche vorhanden sind. Möchte man ein Image ausführen, wird meist zuerst lokal nach solchem gesucht, sollte der Prozess nicht fündig geworden sein, wird im Docker eigenen Repository DockerHub weiter gesucht.
 	\item \textbf{Docker Images}: Stellt ein Dateisystem mit verschiedenen Parametern dar welches nur gelesen aber nicht beschrieben werden kann.
-	
 	\item \textbf{Dockerfiles}: Skripte welche den Bau eines Images vereinfachen und automatisieren.
+	\item \textbf{Docker Containers}: Ein Container, welcher sich meist aus mehreren Images zusammen stellt. Diese enthalten alle nötigen Bibliotheken, Quellcode und Dienste um die Applikation auszuführen. Wenn ein solcher Container angelegt wird, wird wie in Abbildung 2.3 zu sehen ein neuer Layer angelegt, welcher Veränderungen aufnimmt und speichert.
 \end{itemize}
-
 \begin{figure}
 	\centering
-	\caption{Container-Images}
+	\caption{Docker-Images}
 	\includegraphics[width=15cm, height=8cm, scale=0.3]{container-images.png}
 	Quelle: https://docs.docker.com/engine/userguide/storagedriver/imagesandcontainers/
 \end{figure}
-
-Das zusammenspiel dieser Komponenten, sorgt dafür, dass die Erstellung , Ausführung und Administration von Docker Containern sehr schnell und einfach funktioniert.
+Das zusammenspiel dieser Komponenten sorgt dafür, dass die Erstellung , Ausführung und Administration von Docker Containern sehr schnell und einfach funktioniert.\\
+\\
 Dies soll nun anhand einer Webapplikation verdeutlicht werden.
 Hierführ gehen wir davon aus, dass Docker bereits installiert und wir  eine  simple "Hello World !" Django Applikation erstellt haben.
-Diese nutzt folgende Technologien : Python 3 mit Django und Gunicorn als Web Server.
-
-1. Um die Erstellung des Containers zu erleichtern, wird im Hauptverzeichnis der Applikation eine requirements.txt angelegt welche unsere Bedingungen enthält.\\
+Diese nutzt folgende Bibliotheken: Python 3, Django und Gunicorn als Web Server.
+\begin{enumerate}
+	
+\item Um die Erstellung des Containers zu erleichtern, wird im Hauptverzeichnis der Applikation eine requirements.txt angelegt welche unsere Bedingungen enthält.\\
 In diesem Fall :
 
-Django==1.9.4
-gunicorn==19.6.0
+	\textit{Django==1.9.4}\\
+	\textit{gunicorn==19.6.0}
 
-2. Nun soll ein script erstellt werden, welches später die richtige Ausführung des Web Servers übernehmen soll.
+\item Nun soll ein script erstellt werden, welches später die richtige Ausführung des Web Servers übernehmen soll.
 Hierzu wird eine start.sh Datei erstellt welche folgenden Inhalt besitzt :
 
-\#!/bin/bash\\
-exec gunicorn helloworld.wsgi:application \ \\
---bind 0.0.0.0:8000 \ \\
---workers 3 \\ 
+
+	\textit{\#!/bin/bash\\
+	exec gunicorn helloworld.wsgi:application \textbackslash \\
+	--bind 0.0.0.0:8000 \textbackslash \\
+	--workers 3 \\ }
+
 
 Über den exec Befehl wird hierbei Gunicorn mit unserer helloworld applikation gestartet, welche wir über die lokale Adresse 0.0.0.0 und den Port 8000 ansprechen wollen. Zur Sicherheit und verbesserten Bearbeitung von anfragen werden zusätzlich drei "Arbeiter" erstellt.
 
-3. Es kann damit begonnen werden eine Dockerfile im Hauptverzeichnis zu erstellen welche unterschiedliche Befehle beinhalten kann, um die Umgebung anzupassen.
+\item Es kann damit begonnen werden eine Dockerfile im Hauptverzeichnis zu erstellen welche unterschiedliche Befehle beinhalten kann, um die Umgebung anzupassen.
 
-\# Nutzt ein vorgefertigtes Python3 Image von DockerHub als Basis
-FROM python:3-onbuild
+	\textit{FROM python:3-onbuild\\
+	COPY . /usr/src\\
+	EXPOSE 8000\\
+	CMD ["usr/src/start.sh"]}
 
-\# Kopiert den Inhalt des Verzeichnises an die angegebene Stelle innerhalb des Containers 
-COPY . /usr/src
 
-\# Öffnet den Port 8000 um eine Kommunikation zu ermöglichen
-EXPOSE 8000
+\item Das Image muss nun über folgenden Befehl gebaut werden :
 
-\# führt das Skript des Web Servers aus
-CMD ["usr/src/start.sh"]
-
-4. Das Image muss nun über folgenden Befehl gebaut werden :
-
-sudo docker build -t helloworld .
+\textit{sudo docker build -t helloworld .}
 
 Dies führt docker mit root rechten aus um innerhalb des momentanen Verzeichnisses die Dockerfile abzuarbeiten und einen Container mit dem namen helloworld zu erstellen.
 
-5. Als letzter Schritt muss der Container über das Terminal gestartet werden :
+\item Als letzter Schritt muss der Container über das Terminal gestartet werden :
 
-sudo docker run -it -p 8000:8000 helloworld
+\textit{sudo docker run -it -p 8000:8000 helloworld}
 
 Dies führt den Docker Container helloworld aus und verbindet sich über den Port 8000 mit dem Web Server.
+\end{enumerate}
 
 Werden nun Änderungen an der Applikation vorgenommen müssen nur noch die letzten zwei Schritte ausgeführt werden.
 Hierdurch können Neuerungen an Software Systemen sehr schnell umgesetzt und in Betrieb genommen werden ohne mit Komplikationen konfrontiert zu werden.

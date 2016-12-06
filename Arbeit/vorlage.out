@@ -7,9 +7,9 @@
 \BOOKMARK [1][-]{section.1.3}{Vorgehensweise}{chapter.1}% 7
 \BOOKMARK [0][-]{chapter.2}{Docker Grundlagen}{}% 8
 \BOOKMARK [1][-]{section.2.1}{Definition}{chapter.2}% 9
-\BOOKMARK [1][-]{section.2.2}{Die Geschichte, der Ursprung und Entwicklung von Docker}{chapter.2}% 10
-\BOOKMARK [1][-]{section.2.3}{Wie funktioniert Docker ?}{chapter.2}% 11
-\BOOKMARK [1][-]{section.2.4}{Welche Funktionen enth\344lt Docker /Docker Workflow ?}{chapter.2}% 12
+\BOOKMARK [1][-]{section.2.2}{Konzepte und Entwicklungsgeschichte}{chapter.2}% 10
+\BOOKMARK [1][-]{section.2.3}{Funktionsweise}{chapter.2}% 11
+\BOOKMARK [1][-]{section.2.4}{Aufbau und Beispiel}{chapter.2}% 12
 \BOOKMARK [1][-]{section.2.5}{Vorteile und Nachteile von Docker}{chapter.2}% 13
 \BOOKMARK [0][-]{chapter.3}{Docker im Produktiveinsatz}{}% 14
 \BOOKMARK [1][-]{section.3.1}{Anwendungsbereiche - Wer nutzt Docker ?}{chapter.3}% 15
