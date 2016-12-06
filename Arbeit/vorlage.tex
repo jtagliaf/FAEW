@@ -320,7 +320,21 @@ Diese unterstützen den Entwickler nicht nur , sondern geben ihm die Möglichkei
 Der Einsatz von großen Mengen an Containern erzeugt ganz natürlich einen enormen Verwaltungs und Konfigurationsaufwand.
 Aus diesem Grund entwickeln sich momentan mehrere Tools welche die Aufgabe und Verwaltung zu einem großen Teil automatisieren.
 Schon bevor Docker veröffentlicht wurde, experimentierte Google mit Containern und entwickelte hierfür schon Tools zur Administration selbiger.
-Nachdem die Entwickler bei Google auf Docker aufmerksam wurden, bauten sie eine Unterstützung für Docker unter Kubernetes ein
+Eines dieser Tools ist Kubernetes, ein Container-Cluster-Manager welcher dafür zuständig ist automatisiert Container zu starten, zu skalieren und über mehrere Cluster hinweg zu verwalten.
+Dieses Tool wurde 2015 unter der Apache 2.0 Lizenz veröfentlicht.
+Kubernetes ist nicht an Docker gebunden, war jedoch bis dahin die einzigste Möglichkeit diese Funktionalitäten effektiv einzusetzen.
+Docker entwickelte jedoch schon sehr bald eine Hauseigene Alternative unter dem Namen Docker Swarm.
+Diese wurde ende 2015 veröffentlicht.
+Die Funktionsweise beruht im Kern darauf, mehrere Host Systeme zu einem zentralen Virtuellen Docker Host zu bündeln(siehe Abbildung 3.2).
+
+\begin{figure}
+	\centering
+	\caption{docker-swarm}
+	\includegraphics[width=15cm, height=9cm, scale=0.3]{docker-swarm.png}
+	Quelle: https://blog.docker.com/2015/11/deploy-manage-cluster-docker-swarm/
+\end{figure}
+
+
 
 
 \section{Alternativen und Unterschiede ?}
