@@ -318,7 +318,62 @@ Diese unterstützen den Entwickler nicht nur , sondern geben ihm die Möglichkei
 
 \section{Tools - Kubernetes / Docker Swarm}
 Der Einsatz von großen Mengen an Containern erzeugt ganz natürlich einen enormen Verwaltungs und Konfigurationsaufwand.
-Aus diesem Grund entwickeln sich momentan mehrere Tools welche die Aufgabe und Verwaltung zu einem großen Teil automatisieren.
+Aus diesem Grund entstanden sehr schnell unterschiedliche Lösungsansätze um große Teile davon zu automatisieren.
+Selbst kleine Web Projekte bestehen aus unterschiedlichen Services welche zusammen arbeiten müssen um eine lauffähige Applikation zu kreiren.
+Hierzu gehören Datenbanken, Authentifzierungservices, Web Server und Load Balancer um nur wenige zu nennen.
+Um den Betrieb der Hauptapplikation im falle von Problemen oder Änderungen nicht vollständig zu gefärden, empfiehlt es sich für jeden Service eine isolierte Umgebung zu schaffen.
+Dies führt jedoch in der Praxis sehr schnell zu verwirrung und aufwändiger Dokumentation, welchem meist unnötige Konflikte folgen.
+Ein Tool welches diese Problematik lösen soll ist Docker Compose.
+Hierbei wird die gesammte Applikationsumgebung in einer Konfigurationsdatei genau definiert und kann dann mit nur einem Befehl in Betrieb genomen werden.
+Um den Pool an Containern von möglichen weiteren abzugrenzen, wird diesem ein Projekt Name zugewiesen, über welchen die einzelnen Services ansprechbar sind.
+
+Vorteile beim Einsatz von Compose sind z.B.:
+
+- Mehrere Webapplikation welche aus verschiedenen Containern bestehen, können parrallel ausgeführt werden ohne miteinander in Konflikt zu geraten.
+  Dies ist gerade im Bezug auf Entwicklungsumgebungen von Vorteil.
+- Die Konfigurationsdatei dient zusätzlich als Dokumentation
+- Durch die schnelle Inbetriebnahme werden automatisierte Tests stark vereinfacht.
+
+Compose funktionisert jedoch nur auf einem Host und ist deshalb nicht für große und verteilte Applikationen einsetzbar.
+Auch hier entstand im laufe der Entwicklung des Docker Frameworks eine Native Cluster Lösung.
+Bekannt unter dem Namen Docker Swarm sorgt dieses Tool dafür (siehe Abbildung 3.2), unterschiedliche Host Systeme zu einem virtuellen Docker Host zu bündeln.
+
+
+\begin{figure}
+	\centering
+	\caption{docker-swarm}
+	\includegraphics[width=15cm, height=9cm, scale=0.3]{docker-swarm.png}
+	Quelle: https://blog.docker.com/2015/11/deploy-manage-cluster-docker-swarm/
+\end{figure}
+
+Es bringt zusätzlich funktionalitäten wie hohe Verfügbarkeit und Ausfallsicherheit mit sich.
+Dabei ist die Inbetriebnahme nicht weiter Komplex und auch durch drittanbieter Tools umsetzbar.
+Dies wird durch den kompletten Support der Docker API möglich und folgt auch hier folgendem Leitsatz :
+
+\begin{quote}
+	\footnote[1]{Vgl. https://docs.docker.com/v1.6/swarm/}
+	"`\textit{"batteries included but removable"}
+\end{quote}
+
+Seit Version 1.12.0 ist Swarm nun ein fester Bestandteil der Docker Engine.
+https://docs.docker.com/engine/swarm/
+
+
+
+
+
+
+Gerade wenn es darum geht in einem Produktiven Umfeld im großen Stil Container einzusetzen ist eine Lösung wie Docker Swarm unabdingbar.
+
+Vorteile dieses Tools sind z.B.:
+
+- Einfacher Austausch von teilen des Backends
+- High Availabilty und Failover support
+- 
+
+
+
+
 Schon bevor Docker veröffentlicht wurde, experimentierte Google mit Containern und entwickelte hierfür schon Tools zur Administration selbiger.
 Eines dieser Tools ist Kubernetes, ein Container-Cluster-Manager welcher dafür zuständig ist automatisiert Container zu starten, zu skalieren und über mehrere Cluster hinweg zu verwalten.
 Dieses Tool wurde 2015 unter der Apache 2.0 Lizenz veröfentlicht.
@@ -327,12 +382,7 @@ Docker entwickelte jedoch schon sehr bald eine Hauseigene Alternative unter dem 
 Diese wurde ende 2015 veröffentlicht.
 Die Funktionsweise beruht im Kern darauf, mehrere Host Systeme zu einem zentralen Virtuellen Docker Host zu bündeln(siehe Abbildung 3.2).
 
-\begin{figure}
-	\centering
-	\caption{docker-swarm}
-	\includegraphics[width=15cm, height=9cm, scale=0.3]{docker-swarm.png}
-	Quelle: https://blog.docker.com/2015/11/deploy-manage-cluster-docker-swarm/
-\end{figure}
+
 
 
 

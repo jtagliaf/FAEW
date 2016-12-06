@@ -16,8 +16,8 @@
 \contentsline {chapter}{\numberline {3}Docker im Produktiveinsatz}{10}{chapter.3}
 \contentsline {section}{\numberline {3.1}Anwendungsbereiche - Wer nutzt Docker ?}{10}{section.3.1}
 \contentsline {section}{\numberline {3.2}Tools - Kubernetes / Docker Swarm}{10}{section.3.2}
-\contentsline {section}{\numberline {3.3}Alternativen und Unterschiede ?}{12}{section.3.3}
-\contentsline {section}{\numberline {3.4}Wieso gerade Docker ?}{12}{section.3.4}
-\contentsline {section}{\numberline {3.5}Weshalb kommt der Durchbruch erst jetzt ?}{12}{section.3.5}
-\contentsline {chapter}{\numberline {4}Fazit - Ausblick}{13}{chapter.4}
-\contentsline {chapter}{\nonumberline Literaturverzeichnis}{14}{chapter*.5}
+\contentsline {section}{\numberline {3.3}Alternativen und Unterschiede ?}{13}{section.3.3}
+\contentsline {section}{\numberline {3.4}Wieso gerade Docker ?}{13}{section.3.4}
+\contentsline {section}{\numberline {3.5}Weshalb kommt der Durchbruch erst jetzt ?}{13}{section.3.5}
+\contentsline {chapter}{\numberline {4}Fazit - Ausblick}{14}{chapter.4}
+\contentsline {chapter}{\nonumberline Literaturverzeichnis}{15}{chapter*.5}
