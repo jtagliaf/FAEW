@@ -134,7 +134,7 @@ Hierbei stellt sich jedoch die Frage: „Was ist Docker?“ \\
 Auf der Offiziellen Seite wird diese Frage mit folgendem Satz beantwortet :
 
 \begin{quote}
-	\footnote[1]{Vgl. https://www.docker.com/what-docker}
+	\footnote[1]{https://www.docker.com/what-docker}
 	"`\textit{Docker is the world's leading software containerization platform}"
 \end{quote}
 Da diese Aussage wenig bis keinen Informationsgehalt bietet, macht es Sinn, sich zuerst einmal die grundlegenden Konzepte und historische Entwicklung der Container Virtualisierung anzuschauen. 
@@ -199,7 +199,7 @@ Folgende zwei Funktionsweisen sind hierbei besonders wichtig:
 \end{itemize}
 \begin{figure}
 	\centering
-	\caption{Treiber}
+	\caption{Docker-Kernel}
 	\includegraphics[width=13cm, height=9cm, scale=0.3]{docker-execdriver-diagram.png}\\
 	Quelle: http://jancorg.github.io/blog/2015/01/03/libcontainer-overview
 \end{figure}
@@ -288,7 +288,7 @@ Hier eine kurze Erklärung der Befehle :
 
 \textit{sudo docker run -it -p 8000:8000 helloworld}
 
-Dies führt den Docker Container helloworld aus und reicht den Port 8000 des Host Systems, an den Port 8000 der Docker Instanz weiter.
+Dies führt den Docker Container helloworld aus und reicht den Port 8000 des Host Systems, an den Port 8000 der Docker Instanz weiter.\cite{django}
 \end{enumerate}
 Steht dieses Konstrukt erst einmal, werden nur noch die letzten zwei Befehle benötigt um Änderungen, welche möglicherweise an der Applikation vorgenommen wurden, in einen lauffähigen Container umzuwandeln.\\
 \\
@@ -333,21 +333,21 @@ Allgemein Unternehmen im Cloud und Server Bereich wurden sehr schnell auf Docker
 \\
 Ein Blick auf die Unternehmen, welche Docker am stärksten Unterstützen bestätigt diese Behauptung:
 \begin{quote}
-	\footnote[1]{Vgl. https://www.docker.com/docker-news-and-press/industry-leaders-unite-create-project-open-container-standards}
+	\footnote[1]{https://www.docker.com/docker-news-and-press/industry-leaders-unite-create-project-open-container-standards}
 	\textit{Amazon Web Services, Apcera, Cisco, CoreOS, Docker, EMC, Fujitsu Limited, Goldman Sachs, Google, HP, Huawei, IBM, Intel, Joyent, Linux Foundation, Mesosphere, Microsoft, Pivotal, Rancher Labs, Red Hat and VMware create standards around container format and runtime}
 \end{quote}
 Solch ein Zusammenschluss, zeigt deutlich wie wichtig diese Technologe ist und  in Zukunft sein wird.\\
 \\
 \begin{figure}
 	\centering
-	\caption{docker-adoption}
+	\caption{Docker-Adoption}
 	\includegraphics[width=15cm, height=9cm, scale=0.3]{docker-adoption.png}
 	Quelle: https://www.datadoghq.com/docker-adoption/
 \end{figure}
 Betrachtet man Abbildung 3.1 wird deutlich, dass gerade im Webservice Bereich in Verbindung mit BigData Anwendungen, Docker am stärksten eingesetzt wird.
 Um jedoch eine Vorstellung des Umfangs zu bekommen in wieweit Container eingesetzt werden, hilft ein Zitat von Joe Beda, Software Entwickler bei Google, welcher im Jahre 2014 folgendes verkündete.
 \begin{quote}
-	\footnote[2]{Vgl. https://speakerdeck.com/jbeda/containers-at-scale}
+	\footnote[2]{https://speakerdeck.com/jbeda/containers-at-scale}
 	"`\textit{Everything at Google runs in a Container}"\\
 	"`\textit{We start over 2 billion containers per week.}"
 \end{quote}
@@ -421,7 +421,7 @@ Zusätzlich sorgt es dafür, dass wichtige Funktionalitäten, wie hohe Verfügba
 Dabei ist die Inbetriebnahme nicht weiter komplex und auch durch Drittanbieter-Tools umsetzbar.\\
 \begin{figure}
 	\centering
-	\caption{docker-swarm}
+	\caption{Docker-Swarm}
 	\includegraphics[width=15cm, height=9cm, scale=0.3]{docker-swarm.png}
 	Quelle: https://blog.docker.com/2015/11/deploy-manage-cluster-docker-swarm/
 \end{figure}
@@ -429,7 +429,7 @@ Dabei ist die Inbetriebnahme nicht weiter komplex und auch durch Drittanbieter-T
 Dies wird durch den kompletten Support der Docker API möglich und folgt auch hier folgendem Leitsatz:
 
 \begin{quote}
-	\footnote[1]{Vgl. https://docs.docker.com/v1.6/swarm/}
+	\footnote[1]{https://docs.docker.com/v1.6/swarm/}
 	"`\textit{"batteries included but removable"}
 \end{quote}
 Seit Version 1.12.0 ist Swarm ein fester Bestandteil der Docker Engine.\cite{swarm}
@@ -443,46 +443,39 @@ Einige Funktionen sind z.B. :
 
 \begin{itemize}
 	\item Einem Container Bündel (auch Pod genannt) können klare CPU und RAM vorgaben erteilt werden, wodurch automatisiert der optimale Knoten ausgewählt werden kann.
-	\item Kubernetes entscheidet automatisiert wie viele Pods gerade aktiv sein müssen.
+	\item Kubernetes entscheidet automatisiert wie viele Pods gerade aktiv sein müssen.\\
 	\item Es ist möglich einen Rollout im laufenden Betrieb durchzuführen ohne den Betrieb hierfür zu unterbrechen. Sollte dabei ein Problem auftauchen, wird automatisch ein Rollback durchgeführt.
 	\item Support für unterschiedlichste Speichermöglichkeiten. Egal ob Lokal oder von einem Cloud Dienstleister.
 	\item Automatisierte Bereinigung von abgestürzten Containern und Knotenpunkten.
 \end{itemize}
 Obwohl Docker Swarm und Kubernetes versuchen dieselben Probleme zu lösen, so sind die Lösungsansätze doch sehr verschieden und können je nach Anwendungsfall besser oder aber auch schlechter sein.
 
-\section{Wieso gerade Docker ?}
+\section{Wieso gerade Docker?}
 Wie anfangs betont ist die Geschichte der Container Virtualisierung weitaus älter und umfangreicher als man dies vermuten möchte.
-So stellt sich also die Frage, warum gerade durch die Veröffentlichung von Docker diese Art der Virtualisierung so enorm an popularität gewonnen hat.
+So stellt sich also die Frage, warum gerade durch die Veröffentlichung von Docker diese Art der Virtualisierung so enorm an Popularität gewonnen hat.
 Warum konnten frühere Formen wie LXC oder OpenVZ nicht denselben Erfolg erreichen.\\
 \\
-Docker kam zur richtigen Zeit und brachte dabei Funktionalitäten mit sich, welche frühere Umsetzungen nicht besasen.
-Dazu gehörte an erster Stelle, dass der Ansatz von Docker eine einfachere und sichere Verbreitung von Containern erlaubt.
-Mit der Veröffentlichung von libcontainer und der Partnerschafft zu vielen zentralen IT Firmen, machte Docker den Weg frei für eine Standardisierung im Container Umfeld, welche auf wirtschaftlicher Ebene von enormer Wichtigkeit ist.
-Wie Github eine zentrale Anlaufstelle für das collaborative Arbeiten und verteilen von Softwareprojekten ist, so gibt DockerHub der Community eine Plattform über welche Container zentral verwaltet und gewartet werden.
+Docker kam zur richtigen Zeit und brachte dabei Funktionalitäten mit sich, welche frühere Umsetzungen nicht beinhalteten.
+Dazu gehörte an erster Stelle, dass der Ansatz von Docker, eine einfachere und sichere Verbreitung von Containern erlaubt.
+Mit der Veröffentlichung von libcontainer und der Partnerschaft zu vielen zentralen IT Firmen, machte Docker den Weg frei für eine Standardisierung im Container Umfeld, welche auf wirtschaftlicher Ebene von enormer Wichtigkeit ist.
+Wie Github eine zentrale Anlaufstelle für das kollaborative Arbeiten und verteilen von Softwareprojekten ist, so gibt DockerHub der Community eine Plattform über welche Container zentral verwaltet und gewartet werden.
 Dies führt zu einer fülle von Diensten welche innerhalb von wenigen Sekunden geladen und genutzt werden können.\\
-Mit weiteren Projekten wie Docker Swarm, Docker Compose, Docker Registry oder auch Docker Toolbox wird dem Nutzer ein großes und schon jetzt, sehr ausgereiftes Reportoir and Tools geboten, welche den Einsatz von Containern immer komfortabler gestalten.\\
 \\
-Firmen wie z.B. Red Hat versuchen zwar selbst neue Frameworks für die Container Virtualisierung auf den Markt zu bringen können jedoch nicht auf eine solch umfangreiche Community zurück greifen.
+Mit weiteren Projekten wie Docker Swarm, Docker Compose, Docker Registry oder auch Docker Toolbox wird dem Nutzer ein großes und schon jetzt, sehr ausgereiftes Repertoire an Tools geboten, welche den Einsatz von Containern immer komfortabler gestalten.5
 
 \chapter{Fazit - Ausblick} % (fold)
 \label{sec:fazit}
 
 Docker ist ein Werkzeug, welches optimal in eine Zeit von Microservices, Big Data und Cloud Computing passt.
-Es unterstützt durch sein nahezu vollständiges Framework einen sehr reibungslosen Arbeitsablauf und bringt dadurch eine gewisse Stabilität in eine ungewisse Zeit.
-Unterstützt durch Firmen wie Cisco, Google, Huawei, IBM, Microsoft und Red Hat kann ganz klar gesagt werden, das Docker sicherlich nicht nur eine Moderscheinung ist, sondern uns noch eine weile begleiten wird.\\
+Es unterstützt durch sein nahezu vollständiges Framework, einen sehr reibungslosen Arbeitsablauf und bringt dadurch eine gewisse Stabilität in eine ungewisse Zeit.
+Unterstützt durch Firmen wie Cisco, Google, Huawei, IBM, Microsoft und Red Hat kann ganz klar gesagt werden, das Docker sicherlich nicht nur eine Modeerscheinung ist, sondern uns noch eine weile begleiten wird.\\
 \\
-Untersuchungen von Datadog über das verhalten von Firmen im Bezug auf den Einsatz von Containern unterstützen diese Behauptung.
+Untersuchungen von Datadog über das verhalten von Firmen, im Bezug auf den Einsatz von Containern, unterstützen diese Behauptung.\cite{datadog}
 Im letzten Jahr stieg hierbei der Einsatz um 30\% im Vergleich zum Vorjahr wobei es erstaunlich ist, dass gerade große Firmen sehr schnell den Einsatz von Docker umsetzen.
-Auch ist interessant, dass der meistgenannte Grund, warum Container eingesetzt werden die erhöhte Effizienz in der Entwicklung ist.
+Auch ist interessant, dass der meistgenannte Grund, warum Container integriert wurden, die erhöhte Effizienz in der Entwicklung ist.
 So kann sich auch Docker sicherlich bald unter den Standard Tools der Entwicklungswerkzeuge einfinden.\\
 \\
-
-
-
-
-
-https://clusterhq.com/2016/06/16/container-survey/
-https://www.datadoghq.com/docker-adoption/
+Abschließend kann gesagt werden, das Docker eine Virtualisierungslösung darstellt, welche virtuelle Maschinen nicht ersetzt sondern um praktische Funktionen ergänzt und somit eine weitere Technologie, mit dem Ziel, den Umgang mit IT Systemen zu erleichtern.
 
 % chapter fazit (end)
 
@@ -491,16 +484,47 @@ https://www.datadoghq.com/docker-adoption/
 \raggedright
 %%% Printquellen zuerst
 %%% Beispiel
-\bibitem{Th11} Manuel René Theisen:
- \emph{Wissenschaftliches Arbeiten: Technik -- Methodik -- Form};
- 15.~Auflage; Vahlen; München 2011;
- ISBN 978-3-8006-3830-7
+
+\bibitem{Th11} Adrian Mouat:
+\emph{Using Docker};
+O'Reilly Media; Sebastopol 2016;
+ISBN 978-1-491-91576-9
+
+\bibitem{Th11} Deepak Vohra:
+\emph{Kubernetes Microservices with Docker};
+Springer Science; New York 2016;
+ISBN 978-1-4842-1907-2
+
+\bibitem{Th11} Karl Matthias, Sean P. Kane:
+\emph{Docker Up and Running};
+O'Reilly Media; Sebastopol 2015;
+ISBN 978-1-491-91757-2
+
+\bibitem{Th11} Wes Felter, Alexandre Ferreira, Ram Rajamony, Juan Rubio:
+\emph{An Updated Performance Comparison of Virtual Machines and Linux Containers};
+2015 IEEE ISPASS, S. 171-172;
+
+\bibitem{Th11} Antonio Celesti, Davide Mulfari, Maria Fazio, Massimo Villari and Antonio Puliafito:
+\emph{Exploring Container Virtualization in IoT Clouds};
+2016 IEEE International Conference on Smart Computing;
+
+
 
 %%% Internetquellen: Beispiel
-\bibitem{jenkins} \emph{Jenkins};
- \url{https://jenkins.io/};
- abgerufen am 02.12.2016
  
+ \bibitem{scale} \emph{Containers at Scale};
+ \url{https://speakerdeck.com/jbeda/containers-at-scale};
+ abgerufen am 05.12.2016
+ 
+  \bibitem{datadog} \emph{Data Dog};
+  \url{ https://www.datadoghq.com/docker-adoption/};
+  abgerufen am 05.12.2016
+  
+  \bibitem{django} \emph{Django};
+  \url{https://semaphoreci.com/community/tutorials/dockerizing-a-python-django-web-application};
+  abgerufen am 05.12.2016
+  
+
 \bibitem{dockerWhat} \emph{Docker};
  \url{https://www.docker.com/what-docker};
  abgerufen am 02.12.2016
@@ -508,15 +532,22 @@ https://www.datadoghq.com/docker-adoption/
  \bibitem{swarm} \emph{Docker Swarm};
  \url{https://docs.docker.com/engine/swarm/};
  abgerufen am 02.12.2016
- 
- 
 
 
+ \bibitem{jenkins} \emph{Jenkins};
+ \url{https://jenkins.io/};
+ abgerufen am 02.12.2016
+  
+ \bibitem{leaders} \emph{Open Container Standards};
+ \url{https://www.docker.com/docker-news-and-press/industry-leaders-unite-create-project-open-container-standards};
+ abgerufen am 05.12.2016
  
- 
- 
- 
- 
+ \bibitem{quote} \emph{Quote};
+   \url{https://docs.docker.com/v1.6/swarm/};
+   abgerufen am 05.12.2016
+
+
+
  
 \end{thebibliography}
 \end{document}

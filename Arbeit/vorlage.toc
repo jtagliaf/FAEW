@@ -18,6 +18,6 @@
 \contentsline {subsection}{\numberline {3.2.2}Docker Compose}{15}{subsection.3.2.2}
 \contentsline {subsection}{\numberline {3.2.3}Docker Swarm}{16}{subsection.3.2.3}
 \contentsline {subsection}{\numberline {3.2.4}Kubernetes}{17}{subsection.3.2.4}
-\contentsline {section}{\numberline {3.3}Wieso gerade Docker ?}{18}{section.3.3}
+\contentsline {section}{\numberline {3.3}Wieso gerade Docker?}{18}{section.3.3}
 \contentsline {chapter}{\numberline {4}Fazit - Ausblick}{19}{chapter.4}
 \contentsline {chapter}{\nonumberline Literaturverzeichnis}{20}{chapter*.3}

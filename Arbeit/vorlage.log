@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.12.6)  7 DEC 2016 20:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.11.29)  7 DEC 2016 21:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -648,7 +648,20 @@ File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 Package: scrpage2 2015/10/03 v3.19a KOMA-Script package (page head and foot)
 LaTeX Info: Redefining \pagemark on input line 174.
 )
-(./vorlage.aux)
+(./vorlage.aux
+
+LaTeX Warning: Label `Th11' multiply defined.
+
+
+LaTeX Warning: Label `Th11' multiply defined.
+
+
+LaTeX Warning: Label `Th11' multiply defined.
+
+
+LaTeX Warning: Label `Th11' multiply defined.
+
+)
 \openout1 = `vorlage.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 63.
@@ -1135,11 +1148,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 330--335
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 336--336
-[][][]\T1/lmr/m/n/10 Vgl. https://www.docker.com/docker-news-and-press/industry
--leaders-unite-create-project-open-
+[][][]\T1/lmr/m/n/10 https://www.docker.com/docker-news-and-press/industry-lead
+ers-unite-create-project-open-
  []
 
-<images/docker-adoption.png, id=213, 803.0pt x 448.67625pt>
+<images/docker-adoption.png, id=215, 803.0pt x 448.67625pt>
 File: images/docker-adoption.png Graphic file (type png)
 
 <use images/docker-adoption.png>
@@ -1194,7 +1207,7 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language append on input line 372.
 
-<images/docker-machine.png, id=226, 755.82375pt x 477.785pt>
+<images/docker-machine.png, id=228, 755.82375pt x 477.785pt>
 File: images/docker-machine.png Graphic file (type png)
 
 <use images/docker-machine.png>
@@ -1267,7 +1280,7 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language append on input line 415.
 
-<images/docker-swarm.png, id=236, 1894.07625pt x 988.69376pt>
+<images/docker-swarm.png, id=238, 1894.07625pt x 988.69376pt>
 File: images/docker-swarm.png Graphic file (type png)
 
 <use images/docker-swarm.png>
@@ -1296,6 +1309,10 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language append on input line 443.
 [16]
+Underfull \hbox (badness 10000) in paragraph at lines 446--447
+
+ []
+
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language append on input line 448.
 Package babel Info: Redefining ngerman shorthand "~
@@ -1304,97 +1321,114 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language append on input line 448.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language append on input line 448.
- [17 <./images/docker-swarm.png>]
+[17 <./images/docker-swarm.png>]
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language append on input line 453.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language append on input line 453.
 
-Underfull \hbox (badness 10000) in paragraph at lines 454--466
+Underfull \hbox (badness 10000) in paragraph at lines 454--465
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 454--466
+Underfull \hbox (badness 10000) in paragraph at lines 454--465
 
  []
 
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 467.
+(babel)             in language append on input line 466.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 467.
+(babel)             in language append on input line 466.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 467.
+(babel)             in language append on input line 466.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 467.
+(babel)             in language append on input line 466.
 [18]
 chapter 4.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 467.
+(babel)             in language append on input line 466.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 467.
+(babel)             in language append on input line 466.
 
-Underfull \hbox (badness 10000) in paragraph at lines 470--479
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 470--479
+Underfull \hbox (badness 10000) in paragraph at lines 469--479
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 470--479
+Underfull \hbox (badness 10000) in paragraph at lines 469--479
 
- []
-
-
-Overfull \hbox (30.61635pt too wide) in paragraph at lines 484--486
-[]\T1/lmr/m/n/12 https://clusterhq.com/2016/06/16/container-survey/ https://www
-.datadoghq.com/docker-
  []
 
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 490.
+(babel)             in language append on input line 483.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 490.
+(babel)             in language append on input line 483.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 490.
+(babel)             in language append on input line 483.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 490.
+(babel)             in language append on input line 483.
 [19
 
 ]
 chapter without number
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 490.
+(babel)             in language append on input line 483.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 490.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 522.
+(babel)             in language append on input line 483.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 553.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 522.
+(babel)             in language append on input line 553.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 522.
+(babel)             in language append on input line 553.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 522.
+(babel)             in language append on input line 553.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 522.
+(babel)             in language append on input line 553.
 [20
 
-]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 522.
+pdfTeX warning (ext4): destination with the same identifier (name{cite.Th11}) h
+as been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.553 \end{document}
+                    pdfTeX warning (ext4): destination with the same identifier
+ (name{cite.Th11}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.553 \end{document}
+                    pdfTeX warning (ext4): destination with the same identifier
+ (name{cite.Th11}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.553 \end{document}
+                    pdfTeX warning (ext4): destination with the same identifier
+ (name{cite.Th11}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.553 \end{document}
+                    ]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 553.
  (./vorlage.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 522.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 522.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 553.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 553.
 Package rerunfilecheck Info: File `vorlage.out' has not changed.
-(rerunfilecheck)             Checksum: 641143066DCDB6416787898204475E7B;1278.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 522.
+(rerunfilecheck)             Checksum: 2D7844518746C41C331353B6CBEF798E;1277.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 553.
  ) 
 Here is how much of TeX's memory you used:
- 10068 strings out of 493029
- 152351 string characters out of 6136234
- 311120 words of memory out of 5000000
- 13385 multiletter control sequences out of 15000+600000
+ 10078 strings out of 493029
+ 152446 string characters out of 6136233
+ 311302 words of memory out of 5000000
+ 13390 multiletter control sequences out of 15000+600000
  79501 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  49i,12n,78p,383b,488s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1408,10 +1442,10 @@ type1/public/lm/lmro12.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb
 ></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/typ
 e1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr
 /share/texmf/fonts/type1/public/lm/lmtt12.pfb>
-Output written on vorlage.pdf (23 pages, 978059 bytes).
+Output written on vorlage.pdf (23 pages, 981205 bytes).
 PDF statistics:
- 330 PDF objects out of 1000 (max. 8388607)
- 276 compressed objects within 3 object streams
- 65 named destinations out of 1000 (max. 500000)
+ 345 PDF objects out of 1000 (max. 8388607)
+ 291 compressed objects within 3 object streams
+ 70 named destinations out of 1000 (max. 500000)
  204 words of extra memory for PDF output out of 10000 (max. 10000000)
 
