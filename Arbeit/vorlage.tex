@@ -332,88 +332,106 @@ In Anbetracht der sehr schnellen Entwicklung von Docker, könnten diese Nachteil
 
 \chapter{Docker im Produktiveinsatz}
 \section{Anwendungsbereiche}
-Es ist nicht verwunderlich, dass Docker von einer Firma wie dotCloud entwickelt wurde.
-Im Bereich von PAAS war der Druck wie auch der Wunsch, auf Veränderungen im Anforderungsverhalten der Nutzer, schnell und automatisiert reagieren zu können, am stärksten spürbar. 
-Ein Blick auf die Unternehmen, welche Docker am stärksten Unterstützen bestätigt diese Behauptung :
-Cisco - Google - Huawei - IBM - Microsoft - Red Hat
-Solch ein Unterstützer Stamm, zeigt deutlich wie wichtig diese Technology in Zukunft sein wird.
 
+Es ist nicht verwunderlich, dass Docker von einer Firma wie dotCloud entwickelt wurde, welche „Plattform as a Service“ anbietet.
+Im Bereich von PAAS war der Druck wie auch der Wunsch, auf Veränderungen im Anforderungsverhalten der Nutzer, schnell und automatisiert reagieren zu können, stark spürbar. 
+Allgemein Unternehmen im Cloud und Server Bereich wurden sehr schnell auf Docker aufmerksam. \\
+\\
+Ein Blick auf die Unternehmen, welche Docker am stärksten Unterstützen bestätigt diese Behauptung:
+\begin{quote}
+	\footnote[1]{Vgl. https://www.docker.com/docker-news-and-press/industry-leaders-unite-create-project-open-container-standards}
+	\textit{Amazon Web Services, Apcera, Cisco, CoreOS, Docker, EMC, Fujitsu Limited, Goldman Sachs, Google, HP, Huawei, IBM, Intel, Joyent, Linux Foundation, Mesosphere, Microsoft, Pivotal, Rancher Labs, Red Hat and VMware create standards around container format and runtime}
+\end{quote}
+Solch ein Zusammenschluss, zeigt deutlich wie wichtig diese Technologe ist und  in Zukunft sein wird.\\
+\\
 \begin{figure}
 	\centering
 	\caption{docker-adoption}
 	\includegraphics[width=15cm, height=9cm, scale=0.3]{docker-adoption.png}
 	Quelle: https://www.datadoghq.com/docker-adoption/
 \end{figure}
-
 Betrachtet man Abbildung 3.1 wird deutlich, dass gerade im Webservice Bereich in Verbindung mit BigData Anwendungen, Docker am stärksten eingesetzt wird.
 Um jedoch eine Vorstellung des Umfangs zu bekommen in wieweit Container eingesetzt werden, hilft ein Zitat von Joe Beda, Software Entwickler bei Google, welcher im Jahre 2014 folgendes verkündete.
-
 \begin{quote}
-	\footnote[1]{Vgl. https://speakerdeck.com/jbeda/containers-at-scale}
+	\footnote[2]{Vgl. https://speakerdeck.com/jbeda/containers-at-scale}
 	"`\textit{Everything at Google runs in a Container}"\\
 	"`\textit{We start over 2 billion containers per week.}"
 \end{quote}
-
+Dies machte nicht nur deutlich wie relevant diese Technologe ist, sondern zeugte auch von einer enormen Stabilität und Reife.\\
+\\
 Anwendungsbereiche, welche Docker bereits im Produktiveinsatz nutzen, beschränken sich jedoch nicht nur auf große Cloud Dienstleister.
-Gerade im Bereich der Software Entwicklung beginnen viele Teams Docker für sich zu entdecken um Probleme und barrieren bei DevOps zu überwinden.
-Der Grund hierbei liegt in der einfachen Art und Weise unterschiedlichste Umgebungen und Tools zur Verfügung zu stellen.
-Diese unterstützen den Entwickler nicht nur , sondern geben ihm die Möglichkeit Software in einer Produktivumgebunge zu entwickeln und testen.
+Gerade im Bereich der Software Entwicklung beginnen viele Teams Docker für sich zu entdecken um Probleme und Barrieren bei DevOps zu überwinden.
+Die Gründe dafür sind die besser Gewaltenteilung zwischen Entwicklern und Administratoren.
+Es ist hierdurch möglich, dass ein Entwickler kontrollieren kann, was in einem Container geschieht ohne in einen Konflikt mit einem Administrator zu gelangen, welcher für die darunterliegende Infrastruktur zuständig ist. 
+Zusätzlich ist es möglich innerhalb kürzester Zeit unterschiedliche Umgebungen und Tools für ein Team zur Verfügung zu stellen.
+Ein weiterer sehr relevanter Punkt, ist das entwickeln und testen an einem Produktivsystem. Momentan durchläuft ein Software Projekt meist viele Instanzen und Umgebungen, bis schlussendlich das Produkt an den Kunden ausgeliefert wird. Durch den Einsatz von Docker kann dieser Workflow enorm verkürzt werden.\\
+\\
+Es bleibt abzuwarten welche weiteren Anwendungsbereiche, sich durch die Weiterentwicklung der Container Virtualisierung, zusätzlich öffnen werden.
 
-\section{Tools - Kubernetes / Docker Swarm}
-Der Einsatz von großen Mengen an Containern erzeugt ganz natürlich einen enormen Verwaltungs und Konfigurationsaufwand.
-Aus diesem Grund entstanden sehr schnell unterschiedliche Lösungsansätze um große Teile davon zu automatisieren.
-Selbst kleine Web Projekte bestehen aus unterschiedlichen Services welche zusammen arbeiten müssen um eine lauffähige Applikation zu kreiren.
-Hierzu gehören Datenbanken, Authentifzierungservices, Web Server und Load Balancer um nur wenige zu nennen.
-Um den Betrieb der Hauptapplikation im falle von Problemen oder Änderungen nicht vollständig zu gefärden, empfiehlt es sich für jeden Service eine isolierte Umgebung zu schaffen.
-Dies führt jedoch in der Praxis sehr schnell zu verwirrung und aufwändiger Dokumentation, welchem meist unnötige Konflikte folgen.
-Ein Tool welches diese Problematik lösen soll ist Docker Compose.
-Hierbei wird die gesammte Applikationsumgebung in einer Konfigurationsdatei genau definiert und kann dann mit nur einem Befehl in Betrieb genomen werden.
-Um den Pool an Containern von möglichen weiteren abzugrenzen, wird diesem ein Projekt Name zugewiesen, über welchen die einzelnen Services ansprechbar sind.
+\section{Tools}
+Docker versucht zwar ein möglich vollständiges Framework zu erschaffen, besitzt jedoch noch einige Lücken und Probleme, welche momentan durch zusätzliche Tools gelöst werden.
+Dabei treten auch immer mehr Drittanbieter in den Wettstreit, neue Services rund um die Container Virtualisierung anzubieten.\\
+\\
+Im folgenden sollen drei Tools vorgestellt werden, welche das Problem der Verwaltung und Orchestration angehen.
 
-Vorteile beim Einsatz von Compose sind z.B.:
+\subsection{Docker Compose}
+Der Einsatz von großen Mengen an Containern erzeugt ganz natürlich einen enormen Verwaltungs- und Konfigurationsaufwand.
+Aus diesem Grund entstanden sehr schnell unterschiedliche Lösungsansätze, um große Teile davon zu automatisieren.\\
+\\
+Selbst kleine Web Projekte bestehen aus unterschiedlichen Services welche zusammen arbeiten müssen um eine lauffähige Applikation zu kreieren.
+Hierzu gehören z.B. Datenbanken, Authentifizierungservices, Web Server und Load Balancer um nur wenige zu nennen.
+Um den Betrieb der Hauptapplikation, im falle von Problemen oder Änderungen, nicht vollständig zu gefährden, empfiehlt es sich für jeden Service eine isolierte Umgebung zu schaffen.
+Dies führt jedoch in der Praxis sehr schnell zu Verwirrung in Kombination mit aufwändigen Dokumentationen und Aufstockung von administrativem Personal.\\
+\\
+Ein Tool welches einen Teil dieser Problematik löst ist Docker Compose.
+Beim Einsatz von Compose, wird die komplette Applikationsumgebung in einer Konfigurationsdatei definiert und kann dann mit nur einem Befehl in Betrieb genommen werden.
+Ausserdem wird dem Pool an Containern zusätzlich ein Projekt Name zugewiesen, um ihn von möglichen weiteren Instanzen abzugrenzen.
+Dieser Container Zusammenschluss ist dann über einen einzigartigen Namen ansprechbar.\\
+\\
+Im Produktiveinsatz hat dies mehrere Vorteile:
+\begin{itemize}
+\item Mehrere Webapplikation welche aus verschiedenen Containern bestehen, können parallel ausgeführt werden ohne miteinander in Konflikt zu geraten.
+\item Die Konfigurationsdatei dient zusätzlich als Dokumentation.
+\item Durch die schnelle Inbetriebnahme werden automatisierte Tests stark vereinfacht und beschleunigt.
+\end{itemize}
+Docker Compose besitzt jedoch den Nachteil, dass es nur auf einem Host System funktioniert und somit alleine nicht für große und verteilte Applikationen einsetzbar ist.  
+\subsection{Docker Swarm}
 
-- Mehrere Webapplikation welche aus verschiedenen Containern bestehen, können parrallel ausgeführt werden ohne miteinander in Konflikt zu geraten.
-  Dies ist gerade im Bezug auf Entwicklungsumgebungen von Vorteil.
-- Die Konfigurationsdatei dient zusätzlich als Dokumentation
-- Durch die schnelle Inbetriebnahme werden automatisierte Tests stark vereinfacht.
-
-Compose funktionisert jedoch nur auf einem Host und ist deshalb nicht für große und verteilte Applikationen einsetzbar.
-Auch hier entstand im laufe der Entwicklung des Docker Frameworks eine Native Cluster Lösung.
-Bekannt unter dem Namen Docker Swarm sorgt dieses Tool dafür (siehe Abbildung 3.2), unterschiedliche Host Systeme zu einem virtuellen Docker Host zu bündeln.
-
-
-\begin{figure}
+Um den Nachteil von Docker Compose aufzulösen, entstand im laufe der Entwicklung des Docker Frameworks, eine Native Cluster Lösung.\\
+\\
+Bekannt unter dem Namen Docker Swarm, sorgt dieses Tool dafür (siehe Abbildung 3.2), unterschiedliche Host Systeme zu einem virtuellen Docker Host zu bündeln.
+Zusätzlich sorgt es dafür, dass wichtige Funktionalitäten, wie hohe Verfügbarkeit und Ausfallsicherheit, im Produktiveinsatz verfügbar sind.
+Dabei ist die Inbetriebnahme nicht weiter komplex und auch durch Drittanbieter-Tools umsetzbar.
+\begin{figure}[hb]
 	\centering
 	\caption{docker-swarm}
 	\includegraphics[width=15cm, height=9cm, scale=0.3]{docker-swarm.png}
 	Quelle: https://blog.docker.com/2015/11/deploy-manage-cluster-docker-swarm/
 \end{figure}
-
-Es bringt zusätzlich funktionalitäten wie hohe Verfügbarkeit und Ausfallsicherheit mit sich.
-Dabei ist die Inbetriebnahme nicht weiter Komplex und auch durch drittanbieter Tools umsetzbar.
-Dies wird durch den kompletten Support der Docker API möglich und folgt auch hier folgendem Leitsatz :
+\\
+Dies wird durch den kompletten Support der Docker API möglich und folgt auch hier folgendem Leitsatz:
 
 \begin{quote}
 	\footnote[1]{Vgl. https://docs.docker.com/v1.6/swarm/}
 	"`\textit{"batteries included but removable"}
 \end{quote}
-
-Seit Version 1.12.0 ist Swarm nun ein fester Bestandteil der Docker Engine.
-https://docs.docker.com/engine/swarm/
-
-Bevor Docker überhaupt veröffentlicht wurde, experimentierte Google schon seit langem mit LXC Containern und entwarf hierfür eine Cluster Lösung.
+Seit Version 1.12.0 ist Swarm ein fester Bestandteil der Docker Engine.\cite{swarm}
+\subsection{Kubernetes}
+Bevor Docker überhaupt veröffentlicht wurde, experimentierte Google schon seit langem mit LXC- Containern und entwarf hierfür eine Cluster Lösung, um die stetig wachsende Container-Landschaft unter Kontrolle zu halten.
 Mit der steigenden Beliebtheit von Docker stellte Google schließlich sein System Kubernetes als Open Source Lösung zur Verfügung.
-Die Idee der Bündelung von Containern unterscheidet sich kaum zwischen Docker Swarm und Kubernetes.
-Jedoch kann Kubernetes auf einen Erfahrungsschatz von über 15 Jahren im produktiven Umfeld zurück greifen.
+Die Idee der Bündelung von Containern unterscheidet sich hierbei kaum zwischen Docker Swarm und Kubernetes, jedoch wurde diese auf unterschiedlichen Wegen umgesetzt.
+Zusätzlich kann Kubernetes auf einen Erfahrungsschatz von über 15 Jahren im produktiven Umfeld zurück greifen.\\
+\\
 Einige Funktionen sind z.B. :
 
-- Einem Container Bündel (auch Pod genannt) können klare CPU und RAM vorgaben erteilt werden, wodurch automatisiert der optimale Knoten ausgewählt werden kann.
-- Kubernetes entscheidet automatisiert wieviele Pods gerade aktiv sein müssen.
-- Es ist möglich einen Rollout im laufenden Betrieb durchzuführen ohne den Betrieb hierfür zu unterbrechen. Sollte dabei ein Problem auftauchen, wird automatisch ein Rollback durchgeführt.
-- Support für unterschiedlichste Speichermöglichkeiten. Egal ob Lokal oder von einem Cloud Dienstleister.
-- Automatisierte Bereinigung von abgestürzten Containern und Knotenpunkten
-
-Obwohl Docker Swarm und Kubernetes versuchen diesselben Probleme zu lösen, so sind die Lösungsansätze doch sehr verschieden und können je nach Anwendungsfall besser oder aber auch schlechter sein.
+\begin{itemize}
+	\item Einem Container Bündel (auch Pod genannt) können klare CPU und RAM vorgaben erteilt werden, wodurch automatisiert der optimale Knoten ausgewählt werden kann.
+	\item Kubernetes entscheidet automatisiert wie viele Pods gerade aktiv sein müssen.
+	\item Es ist möglich einen Rollout im laufenden Betrieb durchzuführen ohne den Betrieb hierfür zu unterbrechen. Sollte dabei ein Problem auftauchen, wird automatisch ein Rollback durchgeführt.
+	\item Support für unterschiedlichste Speichermöglichkeiten. Egal ob Lokal oder von einem Cloud Dienstleister.
+	\item Automatisierte Bereinigung von abgestürzten Containern und Knotenpunkten.
+\end{itemize}
+Obwohl Docker Swarm und Kubernetes versuchen dieselben Probleme zu lösen, so sind die Lösungsansätze doch sehr verschieden und können je nach Anwendungsfall besser oder aber auch schlechter sein.
 
 \section{Alternativen und Unterschiede ?}
 Wie anfangs betont ist die Geschichte der Container Virtualisierung weitaus älter und umfangreicher als man dies vermuten möchte.
@@ -426,6 +444,7 @@ Aus diesem Grund, soll hier eine Auflistung einiger Alternativen und derere Unte
 
 
 \section{Wieso gerade Docker ?}
+
 
 \section{Weshalb kommt der Durchbruch erst jetzt ?}
 
@@ -462,10 +481,6 @@ https://www.datadoghq.com/docker-adoption/
  ISBN 978-3-8006-3830-7
 
 %%% Internetquellen: Beispiel
-\bibitem{hhneb} \emph{Hochschule Heilbronn};
- \url{http://www.hs-heilbronn.de/};
- abgerufen am 14.08.2010
- 
 \bibitem{jenkins} \emph{Jenkins};
  \url{https://jenkins.io/};
  abgerufen am 02.12.2016
@@ -473,6 +488,13 @@ https://www.datadoghq.com/docker-adoption/
 \bibitem{dockerWhat} \emph{Docker};
  \url{https://www.docker.com/what-docker};
  abgerufen am 02.12.2016
+ 
+ \bibitem{swarm} \emph{Docker Swarm};
+ \url{https://docs.docker.com/engine/swarm/};
+ abgerufen am 02.12.2016
+ 
+ 
+
 
  
  
