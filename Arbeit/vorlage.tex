@@ -11,6 +11,7 @@
 \usepackage{lmodern}
 \usepackage{setspace}
 \usepackage{listings}
+\usepackage{enumitem}
 
 
 \usepackage{hyperref}
@@ -75,7 +76,6 @@
 % chapter abkuerzungsverzeichnis (end)
 
 \listoffigures
-\listoftables
 
 \onehalfspacing
 \newpage
@@ -222,14 +222,15 @@ Hierdurch kann die Geschwindigkeit in der Erstellung und dem Ausführen von Cont
 \section{Aufbau und Beispiel}
 
 Aufbauend auf diesen Grundlagen, sollen nun die einzelnen Komponenten vorgestellt und danach an einem praktischen Beispiel angewandt werden.
-Hierbei liegt der Fokus zuerst auf der Erstellung und Ausführung eines einzelnen Docker Containers.\\
+Der Fokus soll dabei jedoch zuerst auf der Erstellung und Ausführung einer einzelnen Docker Instanz liegen.
+Hierbei wurde auf eine Webapplikation zurück gegriffen, da diese meist auf unterschiedliche Bibliotheken und Services zurück greifen muss um vollständig einsatzfähig zu sein und somit den Einsatz von Containern optimal wiederspiegelen kann.\\
 \\
-Die wichtigsten Komponenten sind :
+Die wichtigsten Komponenten, für die Erstellung und Inbetriebnahme, sind wie folgt:
 \begin{itemize}
-	\item \textbf{Docker daemon}: Docker nutzt eine Client-Server Architektur wobei der Daemon einen serverseitigen Prozess darstellt, welcher die Aufgabe hat Container zu erstellen, auszuführen und zu verteilen.
-	\item \textbf{Docker CLI}: Der Docker Client hat die Möglichkeit über eine REST API mit dem Docker daemon zu kommunizieren und Befehle zu übermitteln.
+	\item \textbf{Docker daemon}: Docker nutzt eine Client-Server Architektur wobei der Daemon einen serverseitigen Prozess darstellt, welcher die Aufgabe hat, Container zu erstellen, auszuführen und zu verteilen.
+	\item \textbf{Docker CLI}: Der Docker Client hat die Möglichkeit, über eine REST API, mit dem Docker daemon zu kommunizieren und Befehle zu übermitteln.
 	\item \textbf{Docker Image Index}: Ein öffentliches oder Privates Verzeichnis über alle Docker Images welche vorhanden sind. Möchte man ein Image ausführen, wird meist zuerst lokal nach solchem gesucht, sollte der Prozess nicht fündig geworden sein, wird im Docker eigenen Repository DockerHub weiter gesucht.
-	\item \textbf{Docker Images}: Stellt ein Dateisystem mit verschiedenen Parametern dar welches nur gelesen aber nicht beschrieben werden kann.
+	\item \textbf{Docker Images}: Stellt ein Dateisystem mit verschiedenen Parametern dar, welches nur gelesen aber nicht beschrieben werden kann.
 	\item \textbf{Dockerfiles}: Skripte welche den Bau eines Images vereinfachen und automatisieren.
 	\item \textbf{Docker Containers}: Ein Container, welcher sich meist aus mehreren Images zusammen stellt. Diese enthalten alle nötigen Bibliotheken, Quellcode und Dienste um die Applikation auszuführen. Wenn ein solcher Container angelegt wird, wird wie in Abbildung 2.3 zu sehen ein neuer Layer angelegt, welcher Veränderungen aufnimmt und speichert.
 \end{itemize}
@@ -239,85 +240,98 @@ Die wichtigsten Komponenten sind :
 	\includegraphics[width=15cm, height=8cm, scale=0.3]{container-images.png}
 	Quelle: https://docs.docker.com/engine/userguide/storagedriver/imagesandcontainers/
 \end{figure}
-Das zusammenspiel dieser Komponenten sorgt dafür, dass die Erstellung , Ausführung und Administration von Docker Containern sehr schnell und einfach funktioniert.\\
+Das Zusammenspiel dieser Komponenten sorgt dafür, dass die Erstellung , Ausführung und Administration von Docker Containern schnell und einfach funktioniert.\\
 \\
-Dies soll nun anhand einer Webapplikation verdeutlicht werden.
-Hierführ gehen wir davon aus, dass Docker bereits installiert und wir  eine  simple "Hello World !" Django Applikation erstellt haben.
-Diese nutzt folgende Bibliotheken: Python 3, Django und Gunicorn als Web Server.
-\begin{enumerate}
+Die logische Abfolge dieser Komponenten soll nun anhand einer simplen Webapplikation verdeutlicht werden.
+Wir gehen davon aus, dass Docker bereits auf dem Host System installiert wurde und eine  simple "Hello World !" Django Applikation angelegt ist.
+Diese Applikation soll folgende Bibliotheken nutzen :\\
+\\
+\textit{Python 3}, \textit{Django 1.9.4} und \textit{Gunicorn 19.6} als Web Server.
+
+\begin{enumerate}[leftmargin=*]
 	
-\item Um die Erstellung des Containers zu erleichtern, wird im Hauptverzeichnis der Applikation eine requirements.txt angelegt welche unsere Bedingungen enthält.\\
+\item Um die Erstellung des Containers zu erleichtern, wird im Hauptverzeichnis der Applikation eine requirements.txt angelegt welche ausser Python alle benötigten Bibliotheken enthält. Die Dockerfile kann somit später auf diese Datei zugreifen und die benötigten Abhängigkeiten installieren. \\
 In diesem Fall :
 
-	\textit{Django==1.9.4}\\
-	\textit{gunicorn==19.6.0}
+\noindent\hspace*{25pt}\textit{Django==1.9.4}\\
+\noindent\hspace*{25pt}\textit{gunicorn==19.6.0}
 
-\item Nun soll ein script erstellt werden, welches später die richtige Ausführung des Web Servers übernehmen soll.
+\item Nun soll ein Skript erstellt werden, welches später die Ausführung des Gunicorn Web Servers, mit den gewünschten Parametern, übernehmen soll.
 Hierzu wird eine start.sh Datei erstellt welche folgenden Inhalt besitzt :
 
 
-	\textit{\#!/bin/bash\\
-	exec gunicorn helloworld.wsgi:application \textbackslash \\
-	--bind 0.0.0.0:8000 \textbackslash \\
-	--workers 3 \\ }
+\noindent\hspace*{25pt}\textit{ \#!/bin/bash\\
+\noindent\hspace*{25pt}	exec gunicorn helloworld.wsgi:application \textbackslash \\
+\noindent\hspace*{25pt}	-{}-bind 0.0.0.0:8000 \textbackslash \\
+\noindent\hspace*{25pt}	-{}-workers 3 }
 
+Über den exec Befehl wird  Gunicorn mit unserer helloworld Applikation gestartet, welche wir über die lokale Adresse 0.0.0.0 und den Port 8000 ansprechen wollen. Zur Sicherheit und verbesserten Bearbeitung von Anfragen werden zusätzlich drei Services (worker) erstellt.
 
-Über den exec Befehl wird hierbei Gunicorn mit unserer helloworld applikation gestartet, welche wir über die lokale Adresse 0.0.0.0 und den Port 8000 ansprechen wollen. Zur Sicherheit und verbesserten Bearbeitung von anfragen werden zusätzlich drei "Arbeiter" erstellt.
+\item Ab diesem Punkt, entsteht die eigentliche Arbeit mit Docker. 
+Um dies zu bewerkstelligen, muss zuerst ein Dockerfile im Hauptverzeichnis der Anwendung erstellt werden.
+Docker nutzt diese Datei später beim Bau des Containers wobei alle Befehle der Reihe nach abgearbeitet werden:
 
-\item Es kann damit begonnen werden eine Dockerfile im Hauptverzeichnis zu erstellen welche unterschiedliche Befehle beinhalten kann, um die Umgebung anzupassen.
+\noindent\hspace*{25pt}\textit{FROM python:3-onbuild\\
+\noindent\hspace*{25pt}COPY . /usr/src\\
+\noindent\hspace*{25pt}RUN pip install -r /requirements.txt
+\noindent\hspace*{25pt}EXPOSE 8000\\
+\noindent\hspace*{25pt}CMD ["usr/src/start.sh"]}
 
-	\textit{FROM python:3-onbuild\\
-	COPY . /usr/src\\
-	EXPOSE 8000\\
-	CMD ["usr/src/start.sh"]}
+Hier eine kurze Erklärung der Befehle :
+\begin{itemize}
+	\item \textit{FROM}: Zieht sich ein Image aus dem lokalen oder externen DockerHub. In diesem Beispiel Python 3
+	\item \textit{COPY}: Kopiert alle Dateien des momentanen Verzeichnisses an den definierten Ort im Container.
+	\item \textit{RUN}: Führt den Befehl pip aus, welcher alle Bibliotheken die in der requirements.txt hinterlegt sind installiert.
+	\item \textit{EXPOSE}: Öffnet den Port 8000 um später auf die Applikation zugreifen zu können.
+	\item \textit{CMD}: Führt das Skript beim Start des Containers aus.
+\end{itemize}
 
-
-\item Das Image muss nun über folgenden Befehl gebaut werden :
+\item Über folgenden Befehl, wird über das Terminal die Dockerfile ausgeführt und ein Container mit dem Namen "'helloworld“ erstellt.
 
 \textit{sudo docker build -t helloworld .}
 
-Dies führt docker mit root rechten aus um innerhalb des momentanen Verzeichnisses die Dockerfile abzuarbeiten und einen Container mit dem namen helloworld zu erstellen.
-
-\item Als letzter Schritt muss der Container über das Terminal gestartet werden :
+\item Als letzter Schritt muss der Container nur noch  über das Terminal gestartet werden:
 
 \textit{sudo docker run -it -p 8000:8000 helloworld}
 
-Dies führt den Docker Container helloworld aus und verbindet sich über den Port 8000 mit dem Web Server.
+Dies führt den Docker Container helloworld aus und reicht den Port 8000 des Host Systems, an den Port 8000 der Docker Instanz weiter.
 \end{enumerate}
-
-Werden nun Änderungen an der Applikation vorgenommen müssen nur noch die letzten zwei Schritte ausgeführt werden.
-Hierdurch können Neuerungen an Software Systemen sehr schnell umgesetzt und in Betrieb genommen werden ohne mit Komplikationen konfrontiert zu werden.
+Steht dieses Konstrukt erst einmal, werden nur noch die letzten zwei Befehle benötigt um Änderungen, welche möglicherweise an der Applikation vorgenommen wurden, in einen lauffähigen Container umzuwandeln.\\
+\\
+Es wurde hierbei auf Terminal Eingaben zurück gegriffen, da die Bedienung der Engine umfangreichere Befehle erlaubt. Unter Windows und MacOSX gibt es jedoch bereits ein GUI namens Docker Kitematic welches grundlegende Funktionalitäten abdeckt.\\
+\\
 Dieses kleine Beispiel kann nicht alle Funktionalitäten von Docker umfassen, gibt aber einen ersten Einblick in die Arbeit mit Containern.
 Ansatzpunkte welche das dargestellte Beispiel erweitern , sind die Verlinkung von Containern (sollte z.b. eine Datenbank hinzukommen) oder auch das erstellen von eigenen Basis Images welche dann veröffentlicht und verteilt werden können.
 
-\section{Vorteile und Nachteile von Docker}
-Um die im Kapitel Grundlagen zusammen getragenen Informationen zu bündeln wird nun auf die allgemeinen Vor- und Nachteile der Docker Container eingegangen.
+\section{Zusammenfassung}
 
-Vorteile :
+Um das Kapitel der Docker Grundlagen abzuschließen, sollen nun alle bisher benannten Informationen zusammen getragen und in Vor- und Nachteile aufgeteilt werden . Dadurch sollen die Hauptaspekte in verkürzter Form dargestellt werden um Aufbauend auf diesem Verständnis den Produktiveinsatz von Docker besser nachvollziehen zu können.\\
+\\
+\textbf{Vorteile :}
 
-- Container sind extrem klein und skalierbar wodurch sie innerhalb kürzerster Zeit erzeugt und ausgeführt werden können um veränderten Anforderungen gerecht zu werden.
-- Sie verhalten sich auf jeder Umgebung immer gleich und man kann dadurch sicher sein bei einem lauffähigen Container auf keine Probleme zu stoßen.
-- Beinhalten im Vergleich zu VMs keinen Overhead im Bezug auf das Betriebssystem
-- Prozessen können gezielt Ressourcen zugewiesen werden
-- Viele vorgefertigte Applikationen z.B. Jenkins, PostgreSQL, Ubuntu, Wordpress stehen über DockerHub zur Verfügung und sind innerhalb weniger Sekunden einsatzbereit.
-- Durch den Einsatz von Containern, können Entwickler Software schneller entwickeln und sie in einer Produktivumgebung testen.
-- Verringert die Komplexität der Entwicklung, da jeder mit der exakt selben Umgebung arbeitet.
-- Sind durch ihre Größe und Isolation sehr gut für Microservices geeignet 
-- Umgebungen werden automatisiert erstellt wodurch Zeit eingespart wird
-
-Nachteile :
-
-- Leichtsinnigkeit kann zu Sicherheitsproblemen führen, da alle Container auf denselben Kernel zugreifen
-- Da Docker Images nur lesbar sind müssen Daten extern über Volumes zur Verfügung gestellt werden
-- Docker kann auf Windows und MacOSX ausgeführt werden, verliert jedoch auf diesen Plattformen an Geschwindigkeit
-
-Es sei jedoch gesagt, dass Docker einer wahnsinnig schnellen Entwicklung unterliegt und einige der genannten Negativ Aspekte bereits bearbeitet werden.
-Man kann davon ausgehen, dass auch im bereich Monitoring und Usability noch viel geschehen wird.
+\begin{itemize}
+	\item Container sind extrem klein und skalierbar wodurch sie innerhalb kürzerster Zeit erzeugt und ausgeführt werden können um veränderten Anforderungen gerecht zu werden.
+	\item Beinhalten im Vergleich zu virtuellen Maschinen kein zusätzliches Betriebssystem welches zusätzliche Ressourcen benötigt.
+	\item Prozesse können gezielt Ressourcen zugewiesen werden
+	\item Viele vorgefertigte Applikationen z.B. Jenkins, PostgreSQL, Ubuntu, Wordpress stehen über DockerHub zur Verfügung und sind innerhalb weniger Sekunden einsatzbereit.
+	\item Container verhalten sich auf jeder Umgebung immer gleich und können somit unproblematisch in Betrieb genommen werden.
+	\item Entwickler haben die Möglichkeit in einer Produktivumgebung zu entwickeln.
+	\item Verringert die Komplexität der Entwicklung, da jeder mit der exakt selben Umgebung arbeitet.
+	\item Sind durch ihre Größe und Isolation sehr gut für Microservices und Webservices geeignet.
+	\item Umgebungen werden vollständig automatisiert erstellt.
+\end{itemize}
+\textbf{Nachteile :}
+\begin{itemize}
+	\item Leichtsinnigkeit kann zu Sicherheitsproblemen führen, da alle Container auf denselben Kernel zugreifen.
+	\item Da Docker Images nur lesbar sind, müssen Daten extern über Volumes zur Verfügung gestellt werden.
+	\item Docker kann auf Windows und MacOSX ausgeführt werden, verliert jedoch auf diesen Plattformen an Geschwindigkeit.
+\end{itemize}
+In Anbetracht der sehr schnellen Entwicklung von Docker, könnten diese Nachteile möglicherweise schon bald gelöst werden.
 
 % chapter grundlagen (end)
 
 \chapter{Docker im Produktiveinsatz}
-\section{Anwendungsbereiche - Wer nutzt Docker ?}
+\section{Anwendungsbereiche}
 Es ist nicht verwunderlich, dass Docker von einer Firma wie dotCloud entwickelt wurde.
 Im Bereich von PAAS war der Druck wie auch der Wunsch, auf Veränderungen im Anforderungsverhalten der Nutzer, schnell und automatisiert reagieren zu können, am stärksten spürbar. 
 Ein Blick auf die Unternehmen, welche Docker am stärksten Unterstützen bestätigt diese Behauptung :
