@@ -66,12 +66,6 @@
 \maketitle
 \tableofcontents
 
-\addchap{Abkürzungsverzeichnis} % (fold)
-\label{sec:abkuerzungsverzeichnis}
-
-\begin{description}
-  \item[ABK:] ABKÜRZUNG 
-\end{description}
 
 % chapter abkuerzungsverzeichnis (end)
 
@@ -372,8 +366,31 @@ Es bleibt abzuwarten welche weiteren Anwendungsbereiche, sich durch die Weiteren
 Docker versucht zwar ein möglich vollständiges Framework zu erschaffen, besitzt jedoch noch einige Lücken und Probleme, welche momentan durch zusätzliche Tools gelöst werden.
 Dabei treten auch immer mehr Drittanbieter in den Wettstreit, neue Services rund um die Container Virtualisierung anzubieten.\\
 \\
-Im folgenden sollen drei Tools vorgestellt werden, welche das Problem der Verwaltung und Orchestration angehen.
+Im folgenden sollen vier Tools vorgestellt werden, welche das Problem der Verwaltung und Orchestration angehen.
+Diese können der Reihenfolge nach aufeinander aufsetzen und sich gegenseitig ergänzen.
 
+\subsection{Docker Machine}
+Da im Cloud und Big Data Umfeld, allgemein mit vielen verteilten Clustern gearbeitet wird, ist eine Manuelle Installation von Host Systemen sehr unpraktikabel.\\
+\\
+Wie viele andere Frameworks in diesem Bereich, bietet auch Docker, die Möglichkeit Host Systeme über eine zentrale Stelle automatisiert zu bespielen.
+Hierzu wird das Tool Docker Machine benutzt.
+Dieses kann dann über einen einzigen Befehl auf allen definierten Host Systemen ein Image aufspielen.
+Dazu wird, wie in Abbildung 3.2 zu sehen, ein aktuelles ISO-Image der passenden Distribution geladen und auf dem Host System installiert.
+Zusätzlich wird die Docker Engine wie auch passende SSL Zertifikate erzeugt und eine SSH Verbindung aufgebaut. 
+Danach steht das System zum Einsatz bereit.\\
+\\
+Diese Vorgehensweise kann in Kombination mit Docker Compose und Docker Swarm dazu genutzt werden, innerhalb kürzester Zeit ein komplettes Cluster in Betrieb zu nehmen.\\
+\\
+Docker unterstützt hierbei unzählige Anbieter:\\
+\\
+\textit{AWS, Digital Ocean, Google Cloud Platform, IBM Softlayer, Microsoft Azure und Hyper-V, OpenStack, Rackspace, VirtualBox, VMware Fusion, vCloud Air und vSphere}\\
+\\
+\begin{figure}
+	\centering
+	\caption{Docker-Machine}
+	\includegraphics[width=15cm, height=9cm, scale=0.3]{docker-machine.png}
+	Quelle: https://docs.docker.com/machine/overview/
+\end{figure}
 \subsection{Docker Compose}
 Der Einsatz von großen Mengen an Containern erzeugt ganz natürlich einen enormen Verwaltungs- und Konfigurationsaufwand.
 Aus diesem Grund entstanden sehr schnell unterschiedliche Lösungsansätze, um große Teile davon zu automatisieren.\\
@@ -399,10 +416,10 @@ Docker Compose besitzt jedoch den Nachteil, dass es nur auf einem Host System fu
 
 Um den Nachteil von Docker Compose aufzulösen, entstand im laufe der Entwicklung des Docker Frameworks, eine Native Cluster Lösung.\\
 \\
-Bekannt unter dem Namen Docker Swarm, sorgt dieses Tool dafür (siehe Abbildung 3.2), unterschiedliche Host Systeme zu einem virtuellen Docker Host zu bündeln.
+Bekannt unter dem Namen Docker Swarm, sorgt dieses Tool dafür (siehe Abbildung 3.3), unterschiedliche Host Systeme zu einem virtuellen Docker Host zu bündeln.
 Zusätzlich sorgt es dafür, dass wichtige Funktionalitäten, wie hohe Verfügbarkeit und Ausfallsicherheit, im Produktiveinsatz verfügbar sind.
-Dabei ist die Inbetriebnahme nicht weiter komplex und auch durch Drittanbieter-Tools umsetzbar.
-\begin{figure}[hb]
+Dabei ist die Inbetriebnahme nicht weiter komplex und auch durch Drittanbieter-Tools umsetzbar.\\
+\begin{figure}
 	\centering
 	\caption{docker-swarm}
 	\includegraphics[width=15cm, height=9cm, scale=0.3]{docker-swarm.png}
@@ -433,34 +450,33 @@ Einige Funktionen sind z.B. :
 \end{itemize}
 Obwohl Docker Swarm und Kubernetes versuchen dieselben Probleme zu lösen, so sind die Lösungsansätze doch sehr verschieden und können je nach Anwendungsfall besser oder aber auch schlechter sein.
 
-\section{Alternativen und Unterschiede ?}
-Wie anfangs betont ist die Geschichte der Container Virtualisierung weitaus älter und umfangreicher als man dies vermuten möchte.
-Deshalb stellt sich auch die Frage, welche Alternativen es zu Docker gibt.
-Aus diesem Grund, soll hier eine Auflistung einiger Alternativen und derere Unterschiede entstehen.
-
-
-
-
-
-
 \section{Wieso gerade Docker ?}
-
-
-\section{Weshalb kommt der Durchbruch erst jetzt ?}
+Wie anfangs betont ist die Geschichte der Container Virtualisierung weitaus älter und umfangreicher als man dies vermuten möchte.
+So stellt sich also die Frage, warum gerade durch die Veröffentlichung von Docker diese Art der Virtualisierung so enorm an popularität gewonnen hat.
+Warum konnten frühere Formen wie LXC oder OpenVZ nicht denselben Erfolg erreichen.\\
+\\
+Docker kam zur richtigen Zeit und brachte dabei Funktionalitäten mit sich, welche frühere Umsetzungen nicht besasen.
+Dazu gehörte an erster Stelle, dass der Ansatz von Docker eine einfachere und sichere Verbreitung von Containern erlaubt.
+Mit der Veröffentlichung von libcontainer und der Partnerschafft zu vielen zentralen IT Firmen, machte Docker den Weg frei für eine Standardisierung im Container Umfeld, welche auf wirtschaftlicher Ebene von enormer Wichtigkeit ist.
+Wie Github eine zentrale Anlaufstelle für das collaborative Arbeiten und verteilen von Softwareprojekten ist, so gibt DockerHub der Community eine Plattform über welche Container zentral verwaltet und gewartet werden.
+Dies führt zu einer fülle von Diensten welche innerhalb von wenigen Sekunden geladen und genutzt werden können.\\
+Mit weiteren Projekten wie Docker Swarm, Docker Compose, Docker Registry oder auch Docker Toolbox wird dem Nutzer ein großes und schon jetzt, sehr ausgereiftes Reportoir and Tools geboten, welche den Einsatz von Containern immer komfortabler gestalten.\\
+\\
+Firmen wie z.B. Red Hat versuchen zwar selbst neue Frameworks für die Container Virtualisierung auf den Markt zu bringen können jedoch nicht auf eine solch umfangreiche Community zurück greifen.
 
 \chapter{Fazit - Ausblick} % (fold)
 \label{sec:fazit}
 
 Docker ist ein Werkzeug, welches optimal in eine Zeit von Microservices, Big Data und Cloud Computing passt.
-Es unterstützt durch sein nahezu vollständiges Framework einen sehr reibungslosen Arbeitsablauf und bringt eine gewisse Stabilität in eine ungewisse Zeit.
-Unterstützt durch Firmen wie Cisco, Google, Huawei, IBM, Microsoft und Red Hat kann ganz klar gesagt werden, das Docker sicherlich nicht nur eine Moderscheinung ist.
+Es unterstützt durch sein nahezu vollständiges Framework einen sehr reibungslosen Arbeitsablauf und bringt dadurch eine gewisse Stabilität in eine ungewisse Zeit.
+Unterstützt durch Firmen wie Cisco, Google, Huawei, IBM, Microsoft und Red Hat kann ganz klar gesagt werden, das Docker sicherlich nicht nur eine Moderscheinung ist, sondern uns noch eine weile begleiten wird.\\
+\\
 Untersuchungen von Datadog über das verhalten von Firmen im Bezug auf den Einsatz von Containern unterstützen diese Behauptung.
 Im letzten Jahr stieg hierbei der Einsatz um 30\% im Vergleich zum Vorjahr wobei es erstaunlich ist, dass gerade große Firmen sehr schnell den Einsatz von Docker umsetzen.
 Auch ist interessant, dass der meistgenannte Grund, warum Container eingesetzt werden die erhöhte Effizienz in der Entwicklung ist.
-Den gerade hier sorgt Docker für ein angenehmes Entwicklungsklima und entgeht Konflikten zwischen Administratoren und Entiwcklern.
+So kann sich auch Docker sicherlich bald unter den Standard Tools der Entwicklungswerkzeuge einfinden.\\
+\\
 
-Man kann davon ausgehen, dass Container Virtualisierung einen festen Bestandteil in der Entwicklung von Systemen einehmen wird.
-Die Entwicklung von Docker schreitet extrem rasant voran was zur Folge hat, dass 
 
 
 
